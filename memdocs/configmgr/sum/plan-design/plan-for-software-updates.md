@@ -7,8 +7,8 @@ ms.author: baladell
 manager: apoorvseth
 ms.date: 04/08/2022
 ms.topic: conceptual
-ms.prod: configuration-manager
-ms.technology: configmgr-sum
+ms.service: configuration-manager
+ms.subservice: software-updates
 ms.localizationpriority: medium
 ms.reviewer: mstewart,aaroncz 
 ms.collection: tier3
@@ -432,6 +432,8 @@ When there's a pending restart for a Configuration Manager software update, the 
 ## <a name="bkmk_ssu"></a> Evaluate software updates after a servicing stack update
 <!--4639943-->
 Starting in version 2002, Configuration Manager detects if a servicing stack update (SSU) is part of an installation for multiple updates. When an SSU is detected, it's installed first. After install of the SSU, a software update evaluation cycle runs to install the remaining updates. This change allows a dependent cumulative update to be installed after the servicing stack update. The device doesn't need to restart between installs, and you don't need to create an additional maintenance window. SSUs are installed first only for non-user initiated installs. For instance, if a user initiates an installation for multiple updates from Software Center, the SSU might not be installed first. Installation of SSUs first isn't available for Windows Server operating systems when using Configuration Manager version 2002. <!--7813007-->This functionality was added in Configuration Manager version 2006 for Windows Server operating systems.
+
+If you have non-Windows updates like Office or third-party updates on the same deadline and they require a restart after installation, cumulative updates might not install right after the SSU because the computer required a restart before doing a full scan again. This can be achieved by selecting the **If any update in this deployment requires a system restart, run update deployment evaluation cycle after restart** checkbox in deployment settings.</mark>
 
 ## Next steps
 

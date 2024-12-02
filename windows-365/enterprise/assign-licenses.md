@@ -7,12 +7,11 @@ keywords:
 author: ErikjeMS  
 ms.author: erikje
 manager: dougeby
-ms.date: 05/09/2023
+ms.date: 10/15/2024
 ms.topic: how-to
 ms.service: windows-365
-ms.subservice:
+ms.subservice: windows-365-enterprise
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -28,17 +27,25 @@ ms.custom: intune-azure; get-started
 ms.collection:
 - M365-identity-device-management
 - tier2
+- essentials-manage
 ---
 
 # Assign licenses
 
-Before a user can use a Cloud PC, you must assign a [Windows 365 license](https://www.microsoft.com/windows-365/all-pricing) to that user. You can assign the licenses using either of these methods:
+[Windows 365 licenses](https://www.microsoft.com/windows-365/all-pricing) must be assigned before users can use a Cloud PC.
+
+## Windows 365 Enterprise
+
+Before a user can use a Cloud PC, you must assign a [Windows 365 license](https://www.microsoft.com/windows-365/all-pricing) to that user. You can assign the licenses using any of these methods:
 
 - Microsoft 365 admin center for individual users. For steps on how to use admin center to assign licenses, see [Assign licenses to users](/microsoft-365/admin/manage/assign-licenses-to-users).
-- [Azure AD admin center](https://aad.portal.azure.com/) for group license assignments. For more information about group license assignments, see [Assign licenses to users by group membership in Azure Active Directory](/azure/active-directory/enterprise-users/licensing-groups-assign).
-- To assign direct licenses to a list of individual users, see [Assign licenses for Windows 365](/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell) or see [Assign license](/graph/api/user-assignlicense) to perform through Graph  
+- [Microsoft Entra admin center](https://aad.portal.azure.com/) for group license assignments. For more information about group license assignments, see [Assign licenses to users by group membership in Microsoft Entra ID](/azure/active-directory/enterprise-users/licensing-groups-assign).
+- To assign direct licenses to a list of individual users, see [Assign licenses for Windows 365](/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell) or see [Assign license](/graph/api/user-assignlicense) to perform through Graph.
 
-<!-- ########################## -->
-Next, check out the following article: 
+## Windows 365 Frontline
+
+Licenses for Windows 365 Frontline are assigned to your tenant and shared across Cloud PCs provisioned in dedicated mode and shared mode. The licenses are assigned by selecting a  Microsoft Entra group during the [creation of provisioning policies](create-provisioning-policy.md).
+
+## Next steps 
 
 [Create Azure network connection](create-azure-network-connection.md).

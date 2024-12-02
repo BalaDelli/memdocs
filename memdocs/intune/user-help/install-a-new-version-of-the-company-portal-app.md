@@ -7,12 +7,10 @@ keywords:
 author: lenewsad
 ms.author: lanewsad
 manager: dougeby
-ms.date: 06/02/2022
+ms.date: 10/08/2024
 ms.topic: end-user-help
-ms.prod:
 ms.service: microsoft-intune
 ms.subservice: end-user
-ms.technology:
 ms.assetid: c002bcb2-ae37-478d-acf3-2bf51faae490
 searchScope:
  - User help
@@ -43,64 +41,70 @@ ms.collection:
  
 Get the latest version of the Microsoft Intune Company Portal app on your Android, iOS, macOS, or Windows device. We recommend using the latest version of the Company Portal app on your device because it contains the latest bug fixes and security updates. 
 
-Your organization may require you to update the app on your device when:  
+You might be required to update the app on your work or school device when:  
 
 * A newer version of Company Portal becomes available.  
 * Your version of Company Portal is no longer supported.  
 
-If an update is required, you'll receive a notification from Company Portal.  
+Company Portal sends notifications to your device when an update is required.  
 
 ## Update on Android device  
 
-Google Play Store will notify you when a new version of the Company Portal is available. You won't see a prompt in the Company Portal app itself. Select the Google Play alert and follow the onscreen prompts to update the app. 
+Google Play Store notifies you when a new version of the Company Portal is available. You won't see a prompt in the Company Portal app itself. Select the Google Play alert and follow the onscreen prompts to update the app. 
 
 ## Update on iOS device  
 
-When a new version of Company Portal becomes available, you'll see an **Update** option in the App Store. 
+Check for available Company Portal updates in the App Store. For more information, see the Apple Support article for [How to manually update apps on your Apple device](https://support.apple.com/en-us/HT202180). 
 
-1. Open the App Store and search for **Intune**.  
-2. Look for the **Update** option next to the Intune Company Portal listing. If available, tap **Update**. 
-3. Follow the onscreen prompts to install the update.
-4. After you've installed the update, return to Company Portal > **Devices**. 
-5. Select the device that you're currently using.
-6. Select **Check Status** to sync your changes.  
+After you install the updates, run a status check on your device in Company Portal.       
+
+1. Open Company Portal and go to **Devices**.   
+
+2. Select the device that you're currently using.  
+
+3. Select **Check Status**.  
 
 > [!NOTE]
-> The minimum supported version of the iOS Company Portal app is v5.2205. If your users are running v5.2204 or below, they will be prompted to update the iOS Company Portal app at login.
+> The minimum supported version of the Company Portal app for iOS/iPadOS is v5.2311.1. If you're running an older version, you will be prompted to update the Company Portal app when you sign in.
 
 ## Update on macOS device  
 
-To view and install available updates on a macOS device: 
+To view available updates for Company Portal on a macOS device: 
 
 1. Open Company Portal and go to **Help**.  
-2. Select **Check for updates** and then select the available update to begin installation.  
-4. When the update is complete, return to Company Portal > **Devices**. 
-5. Select the device that you're currently using.
-6. Select **More [...]** and then choose **Check Status** to sync your device.  
 
-To turn on automatic app updates: 
+1. Select **Check for updates**, and then select the available update to begin installation.  
+
+1. After you install the updates, run a status check on your device in Company Portal. Go to **Devices**.  
+
+1. Select the device that you're currently using.  
+
+1. Select **More [...]** and then choose **Check Status**.  
+
+To turn on automatic app updates:  
+
 1. Open Company Portal and go to **Help**.  
-2. Select **Check for updates**.
+
+2. Select **Check for updates**.  
+
 3. On the Microsoft AutoUpdate screen, select **Automatically download and install**.  
 
+## Update on Windows device  
 
-## Update on Windows 10/11 device  
+To view available app updates on devices running Windows 10/11: 
 
-To install the latest version of Company Portal: 
-1. Open Microsoft Store.
-2. In the search bar, type **Company Portal**.  
-3. Select the app to install the latest version on your device. 
-4. When the update is complete, return to Company Portal and select the device you're currently using.
-5. Select **Check access** to sync your device. 
+1. Open the Microsoft Store app and go to **Downloads**. 
 
-To turn on automatic updates:  
-1. Open Microsoft Store and go to  **Settings**.  
-2. Turn on **App updates**.  
-3. To see a list of all updates and apps that are waiting to download, go to **Downloads and updates**.  
+1. Select **Get Updates**.  
 
-Organizations may disable app updates. If this option is unavailable on your device, use the first set of Windows 10/11 instructions to update your app. 
+1. After you install the updates, run a status check on your device in Company Portal. Go to **Devices**.  
 
+1. Select the device you're currently using.   
+
+1. Select **Check access**.  
+
+Optionally, turn on automatic updates to ensure that you don't miss updates. For more information, see [Turn on automatic app updates](https://support.microsoft.com/windows/turn-on-automatic-app-updates-70634d32-4657-dc76-632b-66048978e51b). Your organization can disable automatic app updates on devices used for work, so this option might be unavailable.  
 
 ## Next steps  
 
-Still need help? Contact your IT support person. For contact information, check the [Company Portal website](https://go.microsoft.com/fwlink/?linkid=2010980).
+Still need help? Contact your IT support person. For contact information, check the [Company Portal website](https://go.microsoft.com/fwlink/?linkid=2010980).  

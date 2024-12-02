@@ -6,13 +6,12 @@ f1.keywords:
 ms.author: erikje
 author: ErikjeMS
 manager: dougeby
-ms.date: 03/24/2023
+ms.date: 08/28/2024
 audience: Admin
 ms.topic: article
 ms.service: windows-365
-ms.subservice:
+ms.subservice: windows-365-business
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -36,8 +35,8 @@ Windows 365 Business offers fixed-price licensing (through Microsoft 365) for 
 
 This table shows examples of the different sizes available for a Cloud PC.
 
-> [!NOTE]  
-> If Microsoft 365 Apps and Microsoft Teams are included in the **Supported apps** column, they are pre-installed for those Cloud PC options.
+> [!NOTE]
+> If Microsoft 365 Apps and Microsoft Teams are included in the **Supported apps** column, they are pre-installed for those Cloud PC options.  Additional licensing is required for these apps.
 
 |CPUs, RAM, and storage|Example scenarios|Supported apps|
 |:-------------------------------------------------------------------------------|:----------------------------------|:----------------------------------|
@@ -45,6 +44,7 @@ This table shows examples of the different sizes available for a Cloud PC.
 |2vCPU/8GB/256GB<br/>2vCPU/8GB/128GB |Bring-your-own-PC, work from home, market researchers, government, consultants. |Microsoft 365 Apps, Microsoft Teams, Outlook, Excel, Access, PowerPoint, OneDrive, Adobe Reader, Microsoft Edge, line-of-business apps, Defender support.  |
 |4vCPU/16GB/512GB<br/>4vCPU/16GB/256GB<br/> 4vCPU/16GB/128GB|Finance, government, consultants, healthcare services, bring-your-own-PC, work-from-home. |Microsoft 365 Apps, Microsoft Teams, Outlook, Excel, Access, PowerPoint, Power BI, Dynamics 365, OneDrive, Adobe Reader, Microsoft Edge, line-of-business apps, Defender support. |
 |8vCPU/32GB/512GB<br/>8vCPU/32GB/256GB<br/>8vCPU/32GB/128GB |Software developers, engineers, content creators, design, and engineering workstations. |Microsoft 365 Apps, Microsoft Teams, Outlook, Access, OneDrive, Adobe Reader, Microsoft Edge, Power BI, Visual Studio Code, line-of-business apps, Defender support.  |
+| 16vCPU/64GB/512GB<br>16vCPU/64GB/1TB | Software development, engineering, data analysis and visualization, financial services and wealth management. | Microsoft 365 Apps, Microsoft Teams, Outlook, Excel, Access, Adobe Reader, Microsoft Edge, Power BI, Tableau, Visual Studio Code, Blackrock Aladdin, Bloomberg, Eclipse, line-of-business apps, Defender support. |
 
 ## Next steps
 

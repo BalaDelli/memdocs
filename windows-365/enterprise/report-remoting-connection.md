@@ -7,12 +7,11 @@ keywords:
 author: ErikjeMS  
 ms.author: erikje
 manager: dougeby
-ms.date: 08/08/2022
+ms.date: 08/28/2024
 ms.topic: overview
 ms.service: windows-365
-ms.subservice:
+ms.subservice: windows-365-enterprise
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -31,6 +30,9 @@ ms.collection:
 ---
 
 # Remoting connection report
+
+> [!IMPORTANT]  
+> The remoting connection report will be retired on December 31st, 2024. After this date, refer to the [Cloud PC connection quality report](report-cloud-pc-connection-quality.md).
 
 The Remoting connection report in [Endpoint analytics](/mem/analytics/overview) helps you monitor key performance metrics for connecting to the Cloud PCs. There are two metrics in this report:
 
@@ -64,6 +66,10 @@ The **Remoting connection** tab lists the following information:
 - Good = 0-30 seconds
 - Average = 30-60 seconds
 - Poor = more than 60 seconds
+
+**Core boot**: Average time it takes to reach the sign-in prompt after a device is turned on. Excludes operating system update time.
+
+**Core sign-in**: Average time it takes to get to a responsive desktop after a user signs in. Excludes new user sign-in and first sign-in after a feature update.
 
 **Insights and recommendations** provide information about the actions that you can take to improve scores for specific Cloud PCs that have poor or average ratings.
 

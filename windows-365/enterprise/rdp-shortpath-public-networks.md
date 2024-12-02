@@ -7,12 +7,11 @@ keywords:
 author: ErikjeMS  
 ms.author: erikje
 manager: dougeby
-ms.date: 05/18/2022
+ms.date: 08/28/2024
 ms.topic: how-to
 ms.service: windows-365
-ms.subservice:
+ms.subservice: windows-365-enterprise
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -43,28 +42,28 @@ To use RDP Shortpath for public networks with Windows 365, you must meet these r
   - STUN server IP ranges on UDP port 3478.
 - Client PC Network  
   - UDP outbound:  
-    - To the public IP addresses assigned to NAT gateway or the Azure Firewall in an Azure Hosted Network Scenario.
+    - To the public IP addresses assigned to Network Address Translation (NAT) gateway or the Azure Firewall in an Azure Hosted Network Scenario.
     - For a Microsoft Hosted network scenario, all public IP spaces.
 
 ## Enable RDP Shortpath for public networks
 
 To enable RDP Shortpath for public networks, visit the following Azure Virtual Desktop documentation page and follow the instructions:
 
-[Enable RDP Shortpath for public networks](/azure/virtual-desktop/shortpath-public#enabling-the-preview-of-rdp-shortpath-for-public-networks).
+[Enable RDP Shortpath for public networks](/azure/virtual-desktop/rdp-shortpath?tabs=public-networks).
 
 ## Verify UDP connectivity
 
-UDP connectivity can be checked within the “Connection Information” section of a Remote session. For more information, see [Verify your network connectivity]( /azure/virtual-desktop/shortpath-public#verify-your-network-connectivity).
+UDP connectivity can be checked within the “Connection Information” section of a Remote session. For more information, see [Verify RDP Shortpath is working](/azure/virtual-desktop/configure-rdp-shortpath?tabs=public-networks#verify-rdp-shortpath-is-working).
 
 ## RDP Shortpath benefits
 
 The default connectivity to a Windows 365 Cloud PC is through a TCP connection that traverses a gateway using the [reverse connect](/azure/virtual-desktop/network-connectivity) transport. The reverse transport means that there’s no need for inbound connectivity to the session host (Cloud PC) to connect RDP traffic.
 
-RDP Shortpath builds on the TCP connection and provides, when possible, another direct connection between the Remote Desktop client and the Windows 365 Cloud PC. This connection uses UDP as the underlying  transport protocol. The direct path and protocol deliver improved connection reliability, lower latency, and higher available bandwidth.
+RDP Shortpath enhances the TCP connection by providing an additional direct or relay-based connection between the Remote Desktop client and the Windows 365 Cloud PC using UDP. This improves connection reliability, reduces latency, and increases available bandwidth.
 
 ![Diagram of RDP Shortpath process](./media/rdp-shortpath-public-networks/rdp-shortpath-diagram.png)
 
-For more information about RDP Shortpath benefits, see [Key benefits](/azure/virtual-desktop/shortpath-public#key-benefits).
+For more information about RDP Shortpath benefits, see [Key benefits](/azure/virtual-desktop/rdp-shortpath?tabs=public-networks#key-benefits).
 
 ## RDP Shortpath connection process
 
@@ -75,20 +74,24 @@ When you use RDP Shortpath, the connection with the Cloud PC proceeds as follows
 3. To test connectivity, the service attempts to connect to a Windows 365 STUN server on the public internet through UDP port 3478. This step also establishes the external IP address of the NAT router.
 4. The session host’s candidate table lists the public IP and listener port that it has reachable connectivity on. This information is provided to the connecting client through the established TCP session.
 5. The client sends its list of reachable public IP addresses/ports to the session host.
-6. Both parties attempt a connection at the same time. Because both are creating outbound connections, it often allows connectivity to be established through firewalls because no inbound initiated connectivity occurs.
+6. Both parties attempt a connection at the same time. Because both are creating outbound connections, it often allows connectivity to be established through firewalls because no inbound initiated connectivity occurs. If this connection is not established, then an indirect UDP connection is attempted using relay.
 7. If connectivity is successful, the service evaluates if the connection is the fastest path. If it is, all dynamic virtual channels (such as graphics, input, device redirection, and more) switch to the new transport flow.
+
+## Indirect UDP connection using TURN
+
+By default, Indirect UDP connections using TURN is turned on for everyone. You can turn off UDP connections for public (and private) RDP Shortpath as described in [POlicy CSP - ADMX_TerminalServer](/windows/client-management/mdm/policy-csp-admx-terminalserver#admx-terminalserver-ts_select_transport) and set **ADMX_TerminalServer/TS_SELECT_TRANSPORT** to **Use only TCP**.
 
 ## Known issues
 
-The RDP Shortpath for public networks may not work with Cloud PCs in the following scenarios:
+The RDP Shortpath for public networks may not work with Cloud PCs where:
 
-- Where double NAT is in place. For example, if the traffic is routed through a Secure Web Gateway (SWG) or proxy where the connection is Natted twice (first, on egress from Azure and, second, from the VPN/SWG endpoint.)
-- Where the connection is routed through an internet proxy or other inspection device.
+- Double NAT is in place. For example, if the traffic is routed through a Secure Web Gateway (SWG) or proxy where the connection uses a NAT twice (first, on egress from Azure and, second, from the VPN/SWG endpoint.)
+- The connection is routed through an internet proxy or other inspection device.
 - Any network that restricts UDP access or limits access to specific ports or IP ranges.
-- Where Carrier Grade NAT (CGN) is used. Where the network shares a public IP address with other networks.
+- Carrier Grade NAT (CGN) is used. Where the network shares a public IP address with other networks.
 
-For more technical details on these scenarios, see [General recommendations](/azure/virtual-desktop/shortpath-public#general-recommendations).
+For more technical details on these scenarios, see [How RDP Shortpath works](/azure/virtual-desktop/rdp-shortpath?tabs=public-networks#how-rdp-shortpath-works).
 
 ## Next steps
 
-For complete information, see [Azure Virtual Desktop RDP Shortpath for public networks](/azure/virtual-desktop/shortpath-public).
+For complete information, see [Azure Virtual Desktop RDP Shortpath for public networks](/azure/virtual-desktop/rdp-shortpath?tabs=public-networks).

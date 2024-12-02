@@ -9,7 +9,8 @@ metadata:
   author: erikjeMS
   ms.author: erikje
   manager: dougeby
-  ms.date: 05/09/2023
+  ms.date: 05/14/2024
+  ms.collection: essentials-navigation
 
 highlightedContent:
   items:
@@ -39,18 +40,23 @@ productDirectory:
       imageSrc: ./media/win365icon.png
       summary: Learn more about Windows 365 Business
       url: ./business/index.yml
+    # Card
+    - title: Windows 365 Link
+      imageSrc: ./media/win365icon.png
+      summary: Learn more about Windows 365 Link
+      url: ./link/index.yml
 
 additionalContent:
   sections:
     - title: Additional resources related to Windows 365
       items:
-      - title: Microsoft Endpoint Manager
+      - title: Microsoft Intune
         links:
-          - text: Microsoft Endpoint Manager documentation
+          - text: Microsoft Intune documentation
             url: /mem/index
           - text: Overview of Microsoft Intune family
             url: /mem/endpoint-manager-overview
-          - text: Microsoft Endpoint Manager blog
+          - text: Microsoft Intune blog
             url: https://aka.ms/memblog
       - title: Microsoft 365
         links: 
@@ -66,7 +72,7 @@ additionalContent:
           url: /microsoft-365/admin/setup/setup-business-standard
         - text: For MSPs, Microsoft 365 Lighthouse Cloud PC management
           url: /microsoft-365/lighthouse/m365-lighthouse-win365-page-overview
-      - title: Azure Active Directory
+      - title: Microsoft Entra ID
         links: 
         - text: User management documentation
           url: /azure/active-directory/fundamentals/active-directory-manage-groups

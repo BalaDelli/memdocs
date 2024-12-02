@@ -3,17 +3,16 @@
 
 title: Require multifactor authentication for Intune device enrollment
 titleSuffix: Microsoft Intune
-description: How to require multifactor authentication in Azure AD for Intune device enrollment.
+description: How to require multifactor authentication in Microsoft Entra ID for Intune device enrollment.
 keywords:
 author: Lenewsad
 ms.author: lanewsad
 manager: dougeby
-ms.date: 12/13/2022
+ms.date: 01/23/2024
 ms.topic: how-to
 ms.service: microsoft-intune
 ms.subservice: enrollment
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 94280c73-c05c-4e72-b0dd-a7cb997782f9
 
 # optional metadata
@@ -40,16 +39,15 @@ ms.collection:
  * Windows 10
  * Windows 11  
 
-[!INCLUDE [azure_portal](../includes/azure_portal.md)]
 
-You can use Intune together with Azure Active Directory (Azure AD) conditional access policies to require multifactor authentication (MFA) during device enrollment. If you require MFA, employees and students wanting to enroll devices must first authenticate with a second device and two forms of credentials.  MFA requires them to authenticate using two or more of these verification methods:  
+You can use Intune together with Microsoft Entra Conditional Access policies to require multifactor authentication (MFA) during device enrollment. If you require MFA, employees and students wanting to enroll devices must first authenticate with a second device and two forms of credentials.  MFA requires them to authenticate using two or more of these verification methods:  
 
-- Something you know, such as a password or PIN.  
-- Something you have that can't be duplicated, such as a trusted device or phone.        
-- Something you are, such as a fingerprint.  
+- Something they know, such as a password or PIN.  
+- Something they have that can't be duplicated, such as a trusted device or phone.        
+- Something they are, such as a fingerprint.  
 
 ## Prerequisites  
-To implement this policy, you must assign Azure Active Directory Premium P1 or later to users.   
+To implement this policy, you must assign Microsoft Entra ID P1 or later to users.   
 
 ## Configure Intune to require multifactor authentication at device enrollment
 
@@ -58,16 +56,16 @@ Complete these steps to enable multi-factor authentication during Microsoft Intu
 > [!IMPORTANT]
 > Don't configure **Device based access rules** for Microsoft Intune enrollment.  
 
-1. Sign in to the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431).
-1. Go to **Devices** > **Conditional access**. This area is the same as the conditional access area available in Azure AD. For more information about the available settings, see [Cloud apps or actions](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#authentication-context-preview).  
-1. Select **New policy**.
+1. Sign in to the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431).  
+1. Go to **Devices** > **Conditional Access**. This area is the same as the Conditional Access area available in the Microsoft Entra admin center. For more information about the available settings, see [Building a Conditional Access policy](/entra/identity/conditional-access/concept-conditional-access-policies).  
+1. Choose **Create new policy**.  
 1. Name your policy.      
-1. Select the **Users or workload identities** category.
+1. Select the **Users** category.
    1. Under the **Include** tab, choose **Select users or groups**.
-   2. Additional options appear. Select **Users and groups**. 
+   2. Additional options appear. Select **Users and groups**. A list of users and groups opens. 
    3. Add the users or groups you're assigning the policy to, and then choose **Select**.    
-   4. To exclude users or groups from the policy, select the **Exclude** tab and add those users or groups.  
-1. Select the next category, **Cloud apps or actions**.  
+   4. To exclude users or groups from the policy, select the **Exclude** tab and add those users or groups like you did in the previous step.    
+1. Select the next category, **Target resources**.  
    1. Select the **Include** tab.  
    2. Choose **Select apps** > **Select**.   
    3. Choose **Microsoft Intune Enrollment** > **Select** to add the app. Use the search bar in the app picker to find the app.   
@@ -79,7 +77,9 @@ Complete these steps to enable multi-factor authentication during Microsoft Intu
      | **Microsoft Intune** | Setup Assistant,<br>Company Portal app | With this option, MFA is required during enrollment and each time the user signs into the Company Portal app or website. The MFA prompts appear on the Company Portal sign-in page. |  
      | **Microsoft Intune Enrollment** | Setup Assistant | With this option, MFA is required during device enrollment and appears as a one-time MFA prompt on the Company Portal sign-in page. |
 
-1. Under **Conditions** you don't need to configure any settings for MFA.
+     > [!NOTE]
+     > The Microsoft Intune Enrollment cloud app isn't created automatically for new tenants. To add the app for new tenants, a Microsoft Entra administrator must create a service principal object, with app ID d4ebce55-015a-49b5-a083-c84d1797ae8c, in PowerShell or Microsoft Graph.  
+
 1. Select the **Grant** category.  
    1. Select **Require multifactor authentication** and **Require device to be marked as compliant**.
    1. Under **For multiple controls**, select **Require all the selected controls**.  
@@ -93,7 +93,7 @@ Complete these steps to enable multi-factor authentication during Microsoft Intu
 After you apply and deploy this policy, users will see a one-time MFA prompt when they enroll their device. 
 
 > [!NOTE]
-> A second device is required to complete the MFA challenge for these types of corporate-owned devices:  
+> A second device or a Temporary Access Pass is required to complete the MFA challenge for these types of corporate-owned devices:  
 >
 > - Android Enterprise fully managed devices  
 > - Android Enterprise corporate-owned devices with a work profile  

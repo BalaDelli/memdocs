@@ -3,15 +3,15 @@ title: Internet access requirements
 titleSuffix: Configuration Manager
 description: Learn about the internet endpoints to allow for full functionality of Configuration Manager features.
 ms.date: 04/08/2022
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.topic: reference
 author: Banreet
 ms.author: banreetkaur
 manager: apoorvseth
 ms.localizationpriority: medium
 ms.collection: tier3
-ms.reviewer: mstewart,aaroncz 
+ms.reviewer: mstewart,aaroncz
 ---
 
 # Internet access requirements
@@ -40,21 +40,21 @@ For more information, see [Updates and servicing](../../servers/manage/updates.m
 > [!TIP]
 > Enable these endpoints for the [management insight](../../servers/manage/management-insights.md) rule, **Connect the site to the Microsoft cloud for Configuration Manager updates**.
 
-- `*.akamaiedge.net`  
+- `*.akamaiedge.net`
 
-- `*.akamaitechnologies.com`  
+- `*.akamaitechnologies.com`
 
-- `*.manage.microsoft.com`  
+- `*.manage.microsoft.com`
 
-- `go.microsoft.com`  
+- `go.microsoft.com`
 
-- `download.microsoft.com`  
+- `download.microsoft.com`
 
-- `download.windowsupdate.com`  
+- `download.windowsupdate.com`
 
-- `download.visualstudio.microsoft.com`  
+- `download.visualstudio.microsoft.com`
 
-- `sccmconnected-a01.cloudapp.net`  
+- `sccmconnected-a01.cloudapp.net`
 
 - `definitionupdates.microsoft.com`
 
@@ -62,6 +62,8 @@ For more information, see [Updates and servicing](../../servers/manage/updates.m
 
     > [!IMPORTANT]
     > This Azure endpoint only supports TLS 1.2 with specific cipher suites.<!-- 10424111 --> Make sure your environment supports these Azure configurations. For more information, see [Azure Front Door: TLS configuration FAQ](/azure/frontdoor/front-door-faq#tls-configuration).
+
+- `cmbitsstore.blob.core.windows.net`
 
 - `ceuswatcab01.blob.core.windows.net`
 
@@ -75,6 +77,8 @@ For more information, see [Updates and servicing](../../servers/manage/updates.m
 
 - `weus2watcab02.blob.core.windows.net`
 
+- `cmbitsstore.blob.core.windows.net`
+
 - `umwatsonc.events.data.microsoft.com`
 
 - `*-umwatsonc.events.data.microsoft.com`
@@ -83,11 +87,11 @@ For more information, see [Updates and servicing](../../servers/manage/updates.m
 
 For more information, see [Manage Windows as a service](../../../osd/deploy-use/manage-windows-as-a-service.md).
 
-- `download.microsoft.com`  
+- `download.microsoft.com`
 
-- `https://go.microsoft.com/fwlink/?LinkID=619849`  
+- `https://go.microsoft.com/fwlink/?LinkID=619849`
 
-- `dl.delivery.mp.microsoft.com`  
+- `dl.delivery.mp.microsoft.com`
 
 ## Azure services
 
@@ -98,11 +102,11 @@ For more information, see [Configure Azure services for use with Configuration M
 
 ## Co-management
 
-If you enroll Windows devices to Microsoft Intune for co-management, make sure those devices can access the endpoints required by Intune. For more information, see [Network endpoints for Microsoft Intune](/intune/intune-endpoints).
+If you enroll Windows devices to Microsoft Intune for co-management, make sure those devices can access the endpoints required by Intune. For more information, see [Network endpoints for Microsoft Intune](/mem/intune/fundamentals/intune-endpoints).
 
 ## Microsoft Store for Business
 
-If you integrate Configuration Manager with the [Microsoft Store for Business](../../../apps/deploy-use/manage-apps-from-the-windows-store-for-business.md), make sure the service connection point and targeted devices can access the cloud service. For more information, see [Microsoft Store for Business proxy configuration](/microsoft-store/prerequisites-microsoft-store-for-business#proxy-configuration).
+If you integrate Configuration Manager with the [Microsoft Store for Business](../../../apps/deploy-use/manage-apps-from-the-windows-store-for-business.md), make sure the service connection point and targeted devices can access the cloud service. For more information, see [Microsoft Store for Business proxy configuration](/mem/intune/fundamentals/intune-endpoints).
 
 ## Delivery optimization
 
@@ -114,7 +118,7 @@ For more information, see the following articles:
 
 - [Delivery optimization FAQ](/windows/deployment/update/waas-delivery-optimization#frequently-asked-questions)
 - [Fundamental concepts for content management in Configuration Manager](../hierarchy/fundamental-concepts-for-content-management.md#delivery-optimization)
-- [Microsoft Connected Cache in Configuration Manager](../hierarchy/microsoft-connected-cache.md)
+- [Microsoft Connected Cache with Configuration Manager](../hierarchy/microsoft-connected-cache.md)
 
 ## Cloud services
 
@@ -126,27 +130,27 @@ For more information on the cloud management gateway (CMG), see [Plan for CMG](.
 
 ## Software updates
 
-Allow the active software update point to access the following endpoints so that WSUS and Automatic Updates can communicate with the Microsoft Update cloud service:  
+Allow the active software update point to access the following endpoints so that WSUS and Automatic Updates can communicate with the Microsoft Update cloud service:
 
-- `http://windowsupdate.microsoft.com`  
+- `http://windowsupdate.microsoft.com`
 
-- `http://*.windowsupdate.microsoft.com`  
+- `http://*.windowsupdate.microsoft.com`
 
-- `https://*.windowsupdate.microsoft.com`  
+- `https://*.windowsupdate.microsoft.com`
 
-- `http://*.update.microsoft.com`  
+- `http://*.update.microsoft.com`
 
-- `https://*.update.microsoft.com`  
+- `https://*.update.microsoft.com`
 
-- `http://*.windowsupdate.com`  
+- `http://*.windowsupdate.com`
 
-- `http://download.windowsupdate.com`  
+- `http://download.windowsupdate.com`
 
-- `http://download.microsoft.com`  
+- `http://download.microsoft.com`
 
-- `http://*.download.windowsupdate.com`  
+- `http://*.download.windowsupdate.com`
 
-- `http://ntservicepack.microsoft.com`  
+- `http://ntservicepack.microsoft.com`
 
 For more information on software updates, see [Plan for software updates](../../../sum/plan-design/plan-for-software-updates.md).
 
@@ -159,13 +163,13 @@ You might need to add endpoints to a firewall that's between two site systems in
 
 #### Software update point on the child site
 
-- `http://<FQDN for software update point on child site>`  
+- `http://<FQDN for software update point on child site>`
 
-- `https://<FQDN for software update point on child site>`  
+- `https://<FQDN for software update point on child site>`
 
-- `http://<FQDN for software update point on parent site>`  
+- `http://<FQDN for software update point on parent site>`
 
-- `https://<FQDN for software update point on parent site>`  
+- `https://<FQDN for software update point on parent site>`
 
 ## Manage Microsoft 365 Apps
 
@@ -183,6 +187,8 @@ If you use Configuration Manager to deploy and update Microsoft 365 Apps for ent
 -  `https://clients.config.office.net` and `https://go.microsoft.com/fwlink/?linkid=2190568` to support deploying updates for Microsoft 365 Apps for enterprise
 
 - `contentstorage.osi.office.net` to support the evaluation of Office add-in readiness<!-- MEMDocs#410 -->
+
+- `clients.config.office.net` to retrieve the names of the files needed for a particular Microsoft 365 Apps update. For more information, see [Using the Microsoft 365 Apps file list API](/office/client-developer/shared/manageability-applications-with-the-office-365-click-to-run-installer#using-the-microsoft-365-apps-file-list-api).
 
 Your top-level site server needs access to the following endpoint to download the Microsoft Apps 365 readiness file:
 
@@ -222,12 +228,6 @@ For more information on this feature, see [Community hub](../../servers/manage/c
 - `https://github.com`
 
 - `https://communityhub.microsoft.com`
-
-## Desktop Analytics
-
-For more information, see [Enable data sharing](../../../desktop-analytics/enable-data-sharing.md#endpoints).
-
-[!INCLUDE [Internet endpoints for Desktop Analytics](includes/internet-endpoints-desktop-analytics.md)]
 
 ## Tenant attach
 

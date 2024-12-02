@@ -7,12 +7,11 @@ services: microsoft-intune
 author: Lenewsad
 ms.author: lanewsad
 manager: dougeby
-ms.date: 02/03/2023
+ms.date: 07/11/2024
 ms.topic: conceptual
 ms.service: microsoft-intune
 ms.subservice: enrollment
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 658a7655-a6df-4dbe-b56c-22c7fc60e706
 
 # optional metadata
@@ -54,6 +53,7 @@ To complete this evaluation step, you must:
 
 - Have a Microsoft Intune subscription: [Sign up for a free trial account](../fundamentals/free-trial-sign-up.md)
 - Complete the evaluation step for [setting up automatic enrollment in Intune](quickstart-setup-auto-enrollment.md).  
+- Be an [Intune Administrator](/entra/identity/role-based-access-control/permissions-reference#intune-administrator). If you signed up for an Intune Trial subscription at the beginning of this quickstart, your trial account has [Global Administrator](/entra/identity/role-based-access-control/permissions-reference#global-administrator) permissions and can complete all procedures in this article.  
 
 Additionally, before you begin enrollment, confirm the version of Windows running on your device.  
 
@@ -93,11 +93,9 @@ Additionally, before you begin enrollment, confirm the version of Windows runnin
 
 ## Confirm device enrollment  
 
-1. Sign in to the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431) as a Global Administrator.
-2. Select **Devices** > **All devices** to view the enrolled devices in Intune.
-3. Verify that you have an additional device enrolled within Intune.
-
-   ![Screenshot of Intune-enrolled devices](./media/quickstart-enroll-windows-device/quickstart-enroll-windows-device-07.png)
+1. Sign in to the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431).  
+2. Select **Devices** > **All devices** to view the enrolled devices in Intune.  
+3. Verify that you have an additional device enrolled within Intune.  
 
 ## Clean up resources
 

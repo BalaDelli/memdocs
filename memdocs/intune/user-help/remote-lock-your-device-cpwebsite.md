@@ -7,12 +7,10 @@ keywords:
 author: lenewsad
 ms.author: lanewsad
 manager: dougeby
-ms.date: 03/03/2023
+ms.date: 11/08/2024
 ms.topic: end-user-help
-ms.prod:
 ms.service: microsoft-intune
 ms.subservice: end-user
-ms.technology:
 ms.assetid: adc6af23-b22f-42e5-955a-4dffbdb8b42b
 
 searchScope:
@@ -44,7 +42,7 @@ Remotely lock the screen of a lost or stolen enrolled device. The *remote lock* 
 1. On any device, sign in to the [Company Portal website](https://portal.manage.microsoft.com) with your work or school account.  
 1. Go to __Devices__.    
 1. Select the device you want to lock.  
-1. Select **Remote lock**. If the lock option isn't visible at the top of your page, select the **More (…)** menu to see all overflow actions. Then select **Remote lock**.  
+1. Select **Remote lock**. If the lock option isn't visible at the top of your page, select the **More (…)** menu to check all overflow actions. 
 1. A message appears to warn you that you are about to lock your device. Tap **Remote lock** to confirm.  
 
 ## Check remote lock status  

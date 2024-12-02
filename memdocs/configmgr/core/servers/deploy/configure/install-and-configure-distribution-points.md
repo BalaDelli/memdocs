@@ -2,16 +2,16 @@
 title: Manage distribution points
 titleSuffix: Configuration Manager
 description: Use distribution points to host the content that you deploy to devices and users.
-ms.date: 04/11/2022
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.date: 09/18/2022
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.topic: how-to
 author: sheetg09
 ms.author: sheetg
 manager: apoorvseth
 ms.localizationpriority: medium
 ms.collection: tier3
-ms.reviewer: mstewart,aaroncz 
+ms.reviewer: mstewart,aaroncz
 ---
 
 # Install and configure distribution points in Configuration Manager
@@ -46,7 +46,7 @@ Before you can make content available to clients, choose a site system server as
 
 ### Prerequisites
 
-When you install a new distribution point, you use an installation wizard that walks you through the available settings. Before you start, consider the following prerequisites:  
+When you install a new distribution point, you use an installation wizard that walks you through the available settings. Before you start, consider the following prerequisites:
 
 - You must have the following security permissions to create and configure a distribution point:
 
@@ -325,7 +325,7 @@ The following settings are on the **Distribution point** page of the Create Site
 
 - **Enable this distribution point for prestaged content**: This setting enables you to add content to the server before you distribute software. Because the content files are already in the content library, they don't transfer over the network when you distribute the software. For more information, see [Prestaged content](../../../plan-design/hierarchy/manage-network-bandwidth.md#BKMK_PrestagingContent).
 
-- **Enable this distribution point to be used as Microsoft Connected Cache server**: Use this option to install a Microsoft Connected Cache server on your distribution point. By caching this content on-premises, your clients can benefit from the Delivery Optimization feature, but you can help to protect WAN links. For more information, including description of the other settings, see [Microsoft Connected Cache in Configuration Manager](../../../plan-design/hierarchy/microsoft-connected-cache.md).
+- **Enable this distribution point to be used as Microsoft Connected Cache server**: Use this option to install a Microsoft Connected Cache server on your distribution point. By caching this content on-premises, your clients can benefit from the Delivery Optimization feature, but you can help to protect WAN links. For more information, including description of the other settings, see [Microsoft Connected Cache with Configuration Manager](../../../plan-design/hierarchy/microsoft-connected-cache.md).
 
 ### <a name="bkmk_config-comm"></a> Communication
 
@@ -336,12 +336,12 @@ The following settings are on the **Communication** page of the Create Site Syst
 - **Allow clients to connect anonymously**: This setting specifies whether the distribution point allows anonymous connections from Configuration Manager clients to the content library.
 
 <!-- I don't think this applies any more, but commenting instead of removing just in case.
-    > [!Important]  
-    > If you don't use this setting, apply the changes described in Microsoft Knowledge Base article [2619572](https://support.microsoft.com/help/2619572/) on Windows 7 clients. Otherwise repair of Windows Installer applications can fail.  
+    > [!Important]
+    > If you don't use this setting, apply the changes described in Microsoft Knowledge Base article [2619572](https://support.microsoft.com/help/2619572/) on Windows 7 clients. Otherwise repair of Windows Installer applications can fail.
     >
-    > When you deploy a Windows Installer application, the Configuration Manager client downloads the file to its local cache. The client eventually removes the files after the installation finishes. The Configuration Manager client updates the Windows Installer source list for the application. It sets the content path to the content library on associated distribution points. Later, if you try to repair the application on the device, MSIExec attempts to access the content path by using an anonymous user.  
+    > When you deploy a Windows Installer application, the Configuration Manager client downloads the file to its local cache. The client eventually removes the files after the installation finishes. The Configuration Manager client updates the Windows Installer source list for the application. It sets the content path to the content library on associated distribution points. Later, if you try to repair the application on the device, MSIExec attempts to access the content path by using an anonymous user.
     >
-    > After you install the update on clients and modify the documented registry key, MSIExec accesses the content path by using the signed-in user account.  
+    > After you install the update on clients and modify the documented registry key, MSIExec accesses the content path by using the signed-in user account.
  -->
 
 - **Create a self-signed certificate or import a PKI client certificate**: Configuration Manager uses this certificate for the following purposes:
@@ -424,6 +424,8 @@ Select the option to **Enable PXE support for clients**, and then configure the 
     > [!NOTE]
     > When you enable a PXE responder on a distribution point without Windows Deployment Service, it can be on the same server as the DHCP service. <!--3734270-->
 
+- **Enable Preferred Management Point(s) for PXE requests**: Preferred Management Point (MP) option will now allow PXE clients to communicate to an initial lookup MP and receive the list of MP(s) to be used for further communication. When the option is enabled, it allows an MP to redirect the PXE client to another MP, based on the client location in the site boundaries. <!--2839966-->
+
 - **Require a password when computers use PXE**: To provide more security for your PXE deployments, specify a strong password.
 
 - **User device affinity**: Specify how you want the distribution point to associate users with the destination computer for PXE deployments. Choose one of the following options:
@@ -438,7 +440,7 @@ Select the option to **Enable PXE support for clients**, and then configure the 
 
 - **Network interfaces**: Specify that the distribution point responds to PXE requests from all network interfaces or from specific network interfaces. If the distribution point responds to specific network interfaces, then provide the MAC address for each network interface.
 
-    > [!Note]  
+    > [!Note]
     > When changing the network interface, restart the WDS service to make sure it properly saves the configuration. When using the PXE responder service, restart the **ConfigMgr PXE Responder Service** (SccmPxe).<!--SCCMDocs issue 642-->
 
 - **Specify the PXE server response delay (seconds)**: When you use multiple PXE servers, specify how long this PXE-enabled distribution point should wait before it responds to computer requests. By default, the Configuration Manager PXE-enabled distribution point responds immediately.

@@ -7,12 +7,11 @@ keywords:
 author: ErikjeMS 
 ms.author: erikje
 manager: dougeby
-ms.date: 05/09/2023
+ms.date: 08/28/2024
 ms.topic: conceptual
 ms.service: windows-365
-ms.subservice:
+ms.subservice: windows-365-enterprise
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -59,13 +58,13 @@ Determine where your end users are physically located. Windows 365 can provide C
 
 You’ll manage your Cloud PC devices by using the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431). Your Cloud PCs are automatically enrolled during provisioning. Evaluate who will manage the Cloud PCs and what [permissions](role-based-access.md) should be given to different management groups.
 
-**Task**: Map out which management groups will perform the configuration of the Cloud PC service, management of the Cloud PC device, and software distribution to the devices. Determine which Microsoft Endpoint Manager and Windows 365 permissions will be assigned to different groups to manage the devices.
+**Task**: Map out which management groups will perform the configuration of the Cloud PC service, management of the Cloud PC device, and software distribution to the devices. Determine which Microsoft Intune and Windows 365 permissions will be assigned to different groups to manage the devices.
 
 ## Inventory your environment
 
-All users [connect to a Cloud PC](../end-user-access-cloud-pc.md) through a Remote Desktop Client or a supported browser. This connection lets users access their Cloud PC from a wide range of devices.
+All users [connect to a Cloud PC](../end-user-access-cloud-pc.md) through a Windows App client or a supported browser. This connection lets users access their Cloud PC from a wide range of devices.
 
-**Task**: For each use case, determine how your end users will connect to their Cloud PC. Determine which platforms they'll use to connect. Will they use a browser or a Remote Desktop Client to connect?
+**Task**: For each use case, determine how your end users will connect to their Cloud PC. Determine which platforms they'll use to connect. Will they use a browser or a Windows App client to connect?
 
 For information on connectivity requirements and supported configurations, see [Requirements](requirements.md).
 

@@ -7,12 +7,11 @@ keywords:
 author: Erikre
 ms.author: erikre
 manager: dougeby
-ms.date: 03/07/2023
+ms.date: 11/18/2024
 ms.topic: conceptual
 ms.service: microsoft-intune
 ms.subservice: apps
 ms.localizationpriority: medium
-ms.technology:
 ms.assetid: 60347012-bc3f-4b9a-a4f4-6d3c5021a6e6
 
 # optional metadata
@@ -20,7 +19,7 @@ ms.assetid: 60347012-bc3f-4b9a-a4f4-6d3c5021a6e6
 #ROBOTS:
 #audience:
 
-ms.reviewer: manchen
+ms.reviewer: bryanke
 ms.suite: ems
 search.appverid: MET150
 #ms.tgt_pltfrm:
@@ -42,7 +41,7 @@ The first step in app deployment is to add the apps, which you want to manage an
 
 ## Deploy
 
-After you've added the app to Intune, you can then [assign it to users and devices that you manage](apps-deploy.md). Intune makes this process easy, and after the app is deployed, you can [monitor the success](apps-monitor.md) of the deployment from the Intune within the portal. Additionally, in some app stores, such as the [Apple](vpp-apps-ios.md) and [Windows](windows-store-for-business.md) app stores, you can purchase app licenses in bulk for your company. Intune can synchronize data with these stores so that you can deploy and track license usage for these types of apps right from the Intune administration console.
+After you've added the app to Intune, you can then [assign it to users and devices that you manage](apps-deploy.md). Intune makes this process easy, and after the app is deployed, you can [monitor the success](apps-monitor.md) of the deployment from the Intune within the portal. Additionally, in some app stores, such as the [Apple](vpp-apps-ios.md) app store, you can purchase app licenses in bulk for your company. Intune can synchronize data with these stores so that you can deploy and track license usage for these types of apps right from the Intune administration console.
 
 ## Configure
 

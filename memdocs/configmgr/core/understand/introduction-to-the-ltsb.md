@@ -3,15 +3,15 @@ title: Introduction to the LTSB
 titleSuffix: Configuration Manager
 description: Learn about the long-term servicing branch of Configuration Manager.
 ms.date: 08/23/2019
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.topic: conceptual
 author: banreet
 ms.author: banreetkaur
 manager: apoorvseth
 ms.localizationpriority: medium
 ms.collection: tier3
-ms.reviewer: mstewart,aaroncz 
+ms.reviewer: mstewart,aaroncz
 ---
 
 # Introduction to the long-term servicing branch of Configuration Manager
@@ -22,7 +22,7 @@ The long-term servicing branch (LTSB) of Configuration Manager is a distinct bra
 
 Based on Configuration Manager version 1606, the LTSB has reduced functionality when compared to the current branch of Configuration Manager.
 
-> [!TIP]   
+> [!TIP]
 > The Configuration Manager LTSB isn't related to the System Center suite long-term servicing channel (LTSC). For more information, see [Overview of System Center release options](/system-center/ltsc-and-sac-overview).
 
 ## Features that aren't available
@@ -32,20 +32,19 @@ The current branch of Configuration Manager supports the following functionality
 - In-console updates that add new features and improvements.
 - Support for newly released operating systems to use as site servers and clients.
 - On-premises MDM
-- The Windows servicing dashboard and servicing plans, including support for recent Windows versions.  
+- The Windows servicing dashboard and servicing plans, including support for recent Windows versions.
 - Support for future releases of Windows Server and Windows 10 LTSB
 - Asset Intelligence
 - Cloud-based distribution points
-- Exchange Online as an Exchange Connector    
+- Exchange Online as an Exchange Connector
 
 Although support for these features isn't available with the LTSB, some features remain visible in the Configuration Manager console, but can't be selected or used.
 
 Cloud integrations, as well as any features included with Configuration Manager current branch version 1610 or later, aren't available to the LTSB. These features include, but aren't limited to the following:<!--SCCMDocs#1823-->
 
 - Co-management
-- Desktop Analytics
 - Cloud management gateway
-- Azure Active Directory integration
+- Microsoft Entra integration
 - Apps from the Microsoft Store for Business
 
 ## Find LTSB documentation
@@ -59,7 +58,7 @@ The LTSB is based on current branch version 1606. Use the [current branch docume
 
 When you reference current branch documentation for the LTSB, details that apply to version 1606 or earlier also apply to the LTSB. Features or details that are introduced with version 1610 or later aren't supported by the LTSB.
 
-## Licensing overview for the LTSB   
+## Licensing overview for the LTSB
 
 Customers with active Software Assurance (SA) on Configuration Manager licenses, or with equivalent subscription rights as of October 1, 2016, have rights to use the October 2016 version 1606 release of Configuration Manager. Customers with rights to Configuration Manager on or after October 1, 2016, will find two licensed options upon installation: current branch and long-term servicing branch (LTSB).
 

@@ -2,16 +2,18 @@
 title: What is Configuration Manager?
 titleSuffix: Configuration Manager
 description: Learn the basics of Microsoft Configuration Manager.
-ms.date: 11/29/2019
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.date: 06/19/2024
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.custom: intro-overview
 ms.topic: overview
 author: banreet
 ms.author: banreetkaur
 manager: apoorvseth
 ms.localizationpriority: medium
-ms.collection: tier3
+ms.collection: 
+    - tier3
+    - essentials-overview
 ms.reviewer: mstewart,aaroncz 
 ---
 
@@ -28,7 +30,7 @@ The following Microsoft management solutions are all now part of the **Microsoft
 - [Configuration Manager](../../index.yml)
 - [Intune](../../../intune/index.yml)
 - [Endpoint analytics](../../../analytics/index.yml)
-- [Autopilot](../../../autopilot/index.yml)
+- [Autopilot](/autopilot/index)
 
 For more information, see [Microsoft Configuration Manager FAQ](microsoft-endpoint-manager-faq.yml).
 
@@ -63,7 +65,7 @@ Configuration Manager extends and works alongside many Microsoft technologies an
 
 Configuration Manager also uses:  
 
-- Active Directory Domain Services and Azure Active Directory for security, service location, configuration, and to discover the users and devices that you want to manage.  
+- Active Directory Domain Services and Microsoft Entra ID for security, service location, configuration, and to discover the users and devices that you want to manage.  
 - Microsoft SQL Server as a distributed change management database—and integrates with SQL Server Reporting Services (SSRS) to produce reports to monitor and track management activities.  
 - Site system roles that extend management functionality and use the web services of Internet Information Services (IIS).
 - Delivery Optimization, Windows Low Extra Delay Background Transport (LEDBAT), Background Intelligent Transfer Service (BITS), BranchCache, and other peer caching technologies to help manage content on your networks and between devices.
@@ -95,8 +97,6 @@ For more information, see the [Software Center user guide](software-center.md).
 ## Next steps
 
 Before you install Configuration Manager, familiarize yourself with the basic concepts and terms:
-
-- If you're familiar with System Center 2012 Configuration Manager, see [What's changed from System Center 2012 Configuration Manager](../plan-design/changes/what-has-changed-from-configuration-manager-2012.md).
 
 - For a high-level technical overview of Configuration Manager, see [Fundamentals of Configuration Manager](fundamentals.md).
 

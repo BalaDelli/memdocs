@@ -8,12 +8,11 @@ keywords:
 author: brenduns
 ms.author: brenduns
 manager: dougeby
-ms.date: 01/20/2023
+ms.date: 08/20/2024
 ms.topic: how-to
 ms.service: microsoft-intune
 ms.subservice: protect
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -21,7 +20,7 @@ ms.assetid:
 #ROBOTS:
 #audience:
 
-ms.reviewer: aanavath
+ms.reviewer: demerson
 ms.suite: ems
 search.appverid: MET150
 #ms.tgt_pltfrm:
@@ -29,6 +28,7 @@ ms.custom:
 ms.collection:
 - tier2
 - M365-identity-device-management
+- sub-mtd-apps
 ---
 
 # Add Mobile Threat Defense apps to unenrolled devices
@@ -39,29 +39,18 @@ End users need the Microsoft Authenticator (iOS) to register their device, and t
 
 Optionally, you can use Intune to add and deploy the Microsoft Authenticator, and Mobile Threat Defense (MTD) apps as well.
 
-> [!NOTE]
-> This article applies to all Mobile Threat Defense partners that support app protection policies:
->
-> - Microsoft Defender for Endpoint (Android, iOS/iPadOS)
-> - Better Mobile (Android, iOS/iPadOS)
-> - Check Point Harmony Mobile (Android, iOS/iPadOS)
-> - Lookout for Work (Android, iOS/iPadOS)
-> - MVISION Mobile (Android, iOS/iPadOS)
-> - SentinelOne (Android, iOS/iPadOS)
-> - Symantec Endpoint Security (Android, iOS/iPadOS)
-> - Wandera (Android, iOS/iPadOS)
-> - Zimperium (Android, iOS/iPadOS)
+[!INCLUDE [mtd-mam-note](../../intune/protect/includes/mtd-mam-note.md)]
 >
 > For unenrolled devices, you **do not need an iOS app configuration policy** that sets up the Mobile Threat Defense for iOS app you use with Intune. This is a key difference compared to Intune enrolled devices.
 
 ## Configure Microsoft Authenticator for iOS via Intune (optional)
 
-When using Intune app protection policies with Mobile Threat Defense, Intune will guide the end user to install, sign in to, and register their device with the Microsoft Authenticator (iOS).
+When using Intune app protection policies with Mobile Threat Defense, Intune guides the end user to install, sign in to, and register their device with the Microsoft Authenticator (iOS).
 
 However, should you wish to make the app available to end users via the Intune Company Portal, see the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Microsoft Authenticator - iOS App Store URL](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458?mt=8) when completing the **Configure app information** section. Don't forget to [assigning app to groups with Intune](../apps/apps-deploy.md) as the final step.
 
 > [!NOTE]
-> For iOS devices, you need the [Microsoft Authenticator](/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) so users can have their identities checked by Azure AD. The Intune Company Portal works as the broker on Android devices so users can have their identities checked by Azure AD.
+> For iOS devices, you need the [Microsoft Authenticator](/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) so users can have their identities checked by Microsoft Entra. The Intune Company Portal works as the broker on Android devices so users can have their identities checked by Microsoft Entra.
 
 ## Making Mobile Threat Defense apps available via Intune (optional)
 
@@ -75,10 +64,18 @@ However, should you wish to make the app available to end users via the Intune C
 ### Making Better Mobile available to end users
 
 - **Android**
-  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Active Shield - Play Store URL](https://play.google.com/store/apps/details?id=com.better.active.shield.enterprise) when completing the **Configure app information** section.
+  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md).
 
 - **iOS**
   - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [ActiveShield - App Store URL](https://itunes.apple.com/us/app/activeshield/id980234260?mt=8&uo=4) when completing the **Configure app information** section.
+
+### Making CylancePROTECT available to end users
+
+- **Android**
+  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [CylancePROTECT - Play Store URL](https://play.google.com/store/apps/details?id=com.blackberry.protect) when completing the **Configure app information** section.
+
+- **iOS**
+  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [CylancePROTECT - App Store URL](https://apps.apple.com/us/app/cylanceprotect/id1511209199) when completing the **Configure app information** section.
 
 ### Making Check Point Harmony Mobile Protect available to end users
 
@@ -88,6 +85,14 @@ However, should you wish to make the app available to end users via the Intune C
 - **iOS**
   - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Harmony Mobile Protect - App Store URL](https://apps.apple.com/us/app/sandblast-mobile-protect/id1006390797) when completing the **Configure app information** section.
 
+### Making Jamf available to end users
+
+- **Android**
+  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Jamf Trust - Play Store URL](https://play.google.com/store/apps/details?id=com.wandera.android) when completing the **Configure app information** section.
+
+- **iOS**
+  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Jamf Trust - App Store URL](https://apps.apple.com/us/app/jamf-trust/id1608041266) when completing the **Configure app information** section.
+
 ### Making Lookout for Work available to end users
 
 - **Android**  
@@ -95,13 +100,6 @@ However, should you wish to make the app available to end users via the Intune C
 
 - **iOS**
   - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Lookout for Work - iOS App Store URL](https://itunes.apple.com/us/app/lookout-for-work/id997193468?mt=8) when completing the **Configure app information** section.
-
-### Making MVISION Mobile available to end users
-
-- **Android**
-  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [MVISION Mobile - Play Store URL](https://play.google.com/store/apps/details?id=com.mcafee.mvision&hl=en_CA&gl=US) when completing the **Configure app information** section.
-- **iOS**
-  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [MVISION Mobile - App Store URL](https://apps.apple.com/us/app/mcafee-mvision-mobile/id1435156022) when completing the **Configure app information** section.
 
 ### Making SentinelOne available to end users
 
@@ -118,13 +116,12 @@ However, should you wish to make the app available to end users via the Intune C
 - **iOS**
   - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [SEP Mobile - App Store URL](https://itunes.apple.com/us/app/skycure/id695620821?mt=8) when completing the **Configure app information** section.
 
-### Making Wandera available to end users
+### Making Trellix Mobile Security available to end users
 
 - **Android**
-  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Wandera Mobile - Play Store URL](https://play.google.com/store/apps/details?id=com.wandera.android) when completing the **Configure app information** section.
-
+  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Trellix Mobile Security - Play Store URL](https://play.google.com/store/apps/details?id=com.mcafee.mvision&hl=en_CA&gl=US) when completing the **Configure app information** section.
 - **iOS**
-  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Wandera Mobile - App Store URL](https://itunes.apple.com/app/wandera/id605469330) when completing the **Configure app information** section.
+  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Trellix Mobile Security - App Store URL](https://apps.apple.com/us/app/mcafee-mvision-mobile/id1435156022) when completing the **Configure app information** section.
 
 ### Making Zimperium available to end users
 
@@ -132,21 +129,6 @@ However, should you wish to make the app available to end users via the Intune C
   - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Zimperium - Play Store URL](https://play.google.com/store/apps/details?id=com.zimperium.zips&hl=en) when completing the **Configure app information** section.
 - **iOS**
   - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Zimperium - App Store URL](https://itunes.apple.com/us/app/zimperium-zips/id1030924459?mt=8) when completing the **Configure app information** section.
-
-<!-- ### Making Pradeo available to end users
-- **Android**
-  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Pradeo - Play Store URL](https://play.google.com/store/apps/details?id=net.pradeo.service&hl=en_US) when completing the **Configure app information** section.
-
-- **iOS**
-  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [Pradeo - App Store URL](https://itunes.apple.com/us/app/pradeo-agent/id547979360?mt=8) when completing the **Configure app information** section. -->
-
-
-<!-- ### Making Sophos available to end users
-- **Android**
-  - See the instructions for [adding Android store apps to Microsoft Intune](../apps/store-apps-android.md). Use this [Sophos - Play Store URL](https://play.google.com/store/apps/details?id=com.sophos.smsec) when completing the **Configure app information** section.
-
-- **iOS**
-  - See the instructions for [adding iOS store apps to Microsoft Intune](../apps/store-apps-ios.md). Use this [ActiveShield - App Store URL](https://itunes.apple.com/us/app/sophos-mobile-security/id1086924662?mt=8) when completing the **Configure app information** section.  -->
 
 ## Next steps
 

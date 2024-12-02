@@ -3,8 +3,8 @@ title: Plan on-premises MDM
 titleSuffix: Configuration Manager
 description: Plan for on-premises mobile device management to manage mobile devices in Configuration Manager
 ms.date: 01/09/2020
-ms.prod: configuration-manager
-ms.technology: configmgr-mdm
+ms.subservice: mdm
+ms.service: configuration-manager
 ms.topic: conceptual
 author: gowdhamankarthikeyan
 ms.author: gokarthi
@@ -26,7 +26,7 @@ There are several key areas to review when you're planning to implement on-premi
 - Device enrollment
 
 > [!IMPORTANT]
-> While the site or any mobile device doesn't connect to Microsoft Intune, your organization still requires Intune licenses to use this feature. For more information, see [Microsoft Intune licensing](/intune/fundamentals/licenses).
+> While the site or any mobile device doesn't connect to Microsoft Intune, your organization still requires Intune licenses to use this feature. For more information, see [Microsoft Intune licensing](/mem/intune/fundamentals/licenses).
 
 Consider the following requirements before preparing the Configuration Manager infrastructure to handle on-premises MDM.
 

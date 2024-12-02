@@ -3,15 +3,17 @@ title: Plan for security
 titleSuffix: Configuration Manager
 description: Get best practices and other information about security in Configuration Manager.
 ms.date: 08/02/2021
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.topic: conceptual
 author: Banreet
 ms.author: banreetkaur
 manager: apoorvseth
 ms.localizationpriority: medium
-ms.collection: tier3
-ms.reviewer: mstewart,aaroncz 
+ms.collection:
+    - tier3
+    - essentials-security
+ms.reviewer: mstewart,aaroncz
 ---
 
 # Plan for security in Configuration Manager
@@ -28,7 +30,7 @@ This article describes the following concepts for you to consider when planning 
 
 - Role-based administration
 
-- Azure Active Directory
+- Microsoft Entra ID
 
 - SMS Provider authentication
 
@@ -86,13 +88,15 @@ With the combination of security roles, security scopes, and collections, you se
 
 For more information, see [Fundamentals of role-based administration](../../understand/fundamentals-of-role-based-administration.md).
 
-## Azure Active Directory
+<a name='azure-active-directory'></a>
 
-Configuration Manager integrates with Azure Active Directory (Azure AD) to enable the site and clients to use modern authentication.
+## Microsoft Entra ID
 
-For more information about Azure AD, see [Azure Active Directory documentation](/azure/active-directory/).
+Configuration Manager integrates with Microsoft Entra ID to enable the site and clients to use modern authentication.
 
-Onboarding your site with Azure AD supports the following Configuration Manager scenarios:
+For more information about Microsoft Entra ID, see [Microsoft Entra documentation](/entra/).
+
+Onboarding your site with Microsoft Entra ID supports the following Configuration Manager scenarios:
 
 ### Client scenarios
 
@@ -109,8 +113,6 @@ Onboarding your site with Azure AD supports the following Configuration Manager 
 - [Manage Microsoft 365 Apps for enterprise](../../../sum/deploy-use/manage-office-365-proplus-updates.md)
 
 ### Server scenarios
-
-- [Desktop Analytics](../../../desktop-analytics/overview.md)
 
 - [Tenant attach](../../../tenant-attach/device-sync-actions.md)
 

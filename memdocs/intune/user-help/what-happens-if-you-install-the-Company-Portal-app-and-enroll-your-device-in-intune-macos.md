@@ -8,12 +8,10 @@ author: lenewsad
 
 ms.author: lanewsad
 manager: dougeby
-ms.date: 11/06/2017
+ms.date: 11/09/2024
 ms.topic: end-user-help
-ms.prod:
 ms.service: microsoft-intune
 ms.subservice: end-user
-ms.technology:
 ms.assetid: c1601bb7-5397-44af-a2e2-9c370f23976f
 
 searchScope:

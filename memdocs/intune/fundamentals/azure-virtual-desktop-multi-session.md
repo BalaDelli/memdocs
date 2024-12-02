@@ -5,10 +5,10 @@ title: Using Azure Virtual Desktop multi-session with Microsoft Intune
 titleSuffix: 
 description: Guidelines for using Azure Virtual Desktop multi-session with Microsoft Intune
 keywords:
-author: smbhardwaj  
+author: smritib17
 ms.author: smbhardwaj
 manager: dougeby
-ms.date: 04/10/2023
+ms.date: 04/23/2024
 ms.topic: conceptual
 ms.service: microsoft-intune
 ms.subservice: fundamentals
@@ -45,7 +45,7 @@ Windows 10 or Windows 11 Enterprise multi-session is a new Remote Desktop Sessio
 You can manage **Windows 10** and **Windows 11 Enterprise multi-session** VMs created in Azure Government Cloud in US Government Community (GCC), GCC High, and DoD. 
 
 > [!IMPORTANT]
-> Microsoft Intune support for Azure Virtual Desktop multi-session is not currently available for Citrix DaaS and VMware Horizon Cloud.
+> Microsoft Intune support for Azure Virtual Desktop multi-session is not currently available for Citrix DaaS and VMware Horizon Cloud. Because Intune cannot offer support for Citrix DaaS, review the Citrix documentation, and be aware of Citrix support options for multi-session support. All questions, concerns or help should be directed to Citrix for multi-session support. See [Citrix support](https://docs.citrix.com/en-us/citrix-daas/install-configure/machine-identities/microsoft-intune ).
 
 ## Overview
 
@@ -56,12 +56,11 @@ Device configuration support in Microsoft Intune for Windows 10 or Windows 11 En
 
 User configuration support in Microsoft Intune for Windows 10 or Windows 11 multi-session VMs is generally available. With this you are able to:
 
- - Configure user scope policies using **Settings catalog** and assign to groups of users. You can use the search bar to search all configurations with scope set to "user".
- 
- - Configure user certificates and assign to users.
+- Configure user scope policies using **Settings catalog** and assign to groups of users. You can use the search bar to search all configurations with scope set to "user".
 
- - Configure PowerShell scripts to install in the user context and assign to users.
+- Configure user certificates and assign to users.
 
+- Configure PowerShell scripts to install in the user context and assign to users.
 
 ## Prerequisites
 
@@ -69,20 +68,28 @@ This feature supports Windows 10 or Windows 11 Enterprise multi-session VMs, whi
 
 - Running Windows 10 multi-session, version 1903 or later, or running Windows 11 multi-session.
 - Set up as remote desktops in pooled host pools that have been deployed through Azure Resource Manager.
+- Under the same tenant as Intune.
 - Running an Azure Virtual Desktop agent version of 1.0.2944.1400 or later.
-- [Hybrid Azure AD-joined](/azure/active-directory/devices/hybrid-azuread-join-plan) and enrolled in Microsoft Intune using one of the following methods:
-  - Configured with [Active Directory group policy](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy), set to use Device credentials, and set to automatically enroll devices that are Hybrid Azure AD-joined.
+- [Microsoft Entra hybrid joined](/azure/active-directory/devices/hybrid-azuread-join-plan) and enrolled in Microsoft Intune using one of the following methods:
+  - Configured with [Active Directory group policy](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy), set to use Device credentials, and set to automatically enroll devices that are Microsoft Entra hybrid joined.
   - [Configuration Manager co-management](/configmgr/comanage/overview).
-- Azure AD-joined and enrolled in Microsoft Intune by enabling [Enroll the VM with Intune](/azure/virtual-desktop/deploy-azure-ad-joined-vm#deploy-azure-ad-joined-vms) in the Azure portal.
+- Microsoft Entra joined and enrolled in Microsoft Intune by enabling [Enroll the VM with Intune](/azure/virtual-desktop/deploy-azure-ad-joined-vm#deploy-azure-ad-joined-vms) in the Azure portal.
 - Licensing: The appropriate Azure Virtual Desktop and Microsoft Intune license is required if a user or device benefits directly or indirectly from the Microsoft Intune service, including access to the Microsoft Intune service through a Microsoft API. For more information, go to [Microsoft Intune licensing](licenses.md).
+- See [What is Azure Virtual Desktop?](/azure/virtual-desktop/overview#requirements) for more information about Azure Virtual Desktop licensing requirements.
+
+## Limitations
+
+Intune does not support using a cloned image of a computer that is already enrolled. This includes both physical and virtual devices such as Azure Virtual Desktop (AVD). When device enrollment or identity tokens are replicated between devices, Intune device enrollment or synchronization failures will occur.
+
+- For more information, see [Mobile device enrollment - Windows Client Management](/windows/client-management/mobile-device-enrollment) and [Certificate authentication device enrollment - Windows Client Management](/windows/client-management/certificate-authentication-device-enrollment).
+- For information on troubleshooting issues related to image cloning, see [Error hr 0x8007064c: The machine is already enrolled](/troubleshoot/mem/intune/troubleshoot-windows-enrollment-errors#error-hr-0x8007064c-the-machine-is-already-enrolled).
 
 > [!NOTE]
-> If you're joining session hosts to Azure Active Directory Domain Services, you can't manage them using Intune.
+> If you're joining session hosts to Microsoft Entra Domain Services, you can't manage them using Intune.
 
 > [!IMPORTANT]
-> If you're using Windows 10, versions 2004, 20H2, or 21H1 builds, make sure that you install the July 2021 Windows Update or a later Windows update. Otherwise, remote actions in the Microsoft Intune admin center, like remote sync, won't work correctly. As a result, pending policies assigned to devices might take up to 8 hours to be applied.
-
-See [What is Azure Virtual Desktop?](/azure/virtual-desktop/overview#requirements) for more information about Azure Virtual Desktop licensing requirements.
+> - If you're using Windows 10, versions 2004, 20H2, or 21H1 builds, make sure that you install the July 2021 Windows Update or a later Windows update. Otherwise, remote actions in the Microsoft Intune admin center, like remote sync, won't work correctly. As a result, pending policies assigned to devices might take up to 8 hours to be applied.
+> - Intune does not currently support token roaming functionality between devices. If [FSLogix](/fslogix), or a similar technology, is used to manage Windows user profiles and settings, you must ensure that tokens are not unexpectedly roamed or duplicated across devices. To confirm that you are running a supported version and configuration of FSLogix with token roaming disabled, please see the [FSLogix RoamIdentity Configuration Settings Reference](/fslogix/reference-configuration-settings?tabs=profiles#roamidentity).
 
 Windows 10 or Windows 11 Enterprise multi-session VMs are treated as a separate OS edition and some Windows 10 or Windows 11 Enterprise configurations won't be supported for this edition. Using Microsoft Intune doesn't depend on or interfere with Azure Virtual Desktop management of the same VM.
 
@@ -104,7 +111,7 @@ Microsoft Intune won't deliver unsupported templates to multi-session devices, a
 
 ### To configure policies
 
-1. Sign in to the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431) and choose **Devices** > **Windows** > **Configuration profiles** > **Create Profile**.
+1. Sign in to the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431) and choose **Devices** > **By platform** > **Windows** > **Manage devices** > **Configuration** > **Create** > **New Policy**.
 2. For **Platform**, select **Windows 10 and later**.
 3. For **Profile type**, select **Settings catalog**, or when deploy settings by using a Template, select **Templates** and then the name of the supported Template.
 4. Select **Create**.
@@ -114,12 +121,12 @@ Microsoft Intune won't deliver unsupported templates to multi-session devices, a
     - **Key**: **OS edition**
     - **Operator**: **==**
     - **Value**: **Enterprise multi-session**
-    - Select **Apply**. The filtered list now shows all configuration profile categories that support Windows 10 or Windows 11 Enterprise multi-session. The scope for a policy is shown in parantheses. For user scope it shows as (User) and all the rest are policies with device scope. 
+    - Select **Apply**. The filtered list now shows all configuration profile categories that support Windows 10 or Windows 11 Enterprise multi-session. The scope for a policy is shown in parentheses. For user scope it shows as (User) and all the rest are policies with device scope. 
 8. From the filtered list, pick the categories that you want.
     - For each category you pick, select the settings that you want to apply to your new configuration profile.
     - For each setting, select the value that you want for this configuration profile.
 9. Select **Next** when you're done adding settings.
-10. On the **Assignments** page, choose the Azure AD groups containing the devices to which you want this profile assigned > **Next**.
+10. On the **Assignments** page, choose the Microsoft Entra groups containing the devices to which you want this profile assigned > **Next**.
 11. On the **Scope tags** page, optionally add the scope tags you want to apply to this profile > **Next**. For more information about scope tags, see [Use role-based access control and scope tags for distributed IT](../fundamentals/scope-tags.md).
 12. On the **Review + create** page, choose **Create** to create the profile.
 
@@ -129,6 +136,8 @@ Windows 10 or Windows 11 Administrative Templates are supported for Windows 10 o
 
 - ADMX-backed policies are supported. Some policies aren't yet available in the Settings catalog.
 - ADMX-ingested policies are supported, including Office and Microsoft Edge settings available in Office administrative template files and Microsoft Edge administrative template files. For a complete list of ADMX-ingested policy categories, see [Win32 and Desktop Bridge app policy configuration](/windows/client-management/mdm/win32-and-centennial-app-policy-configuration#overview). Some ADMX ingested settings won't be applicable to Windows 10 or Windows 11 Enterprise multi-session.
+
+To list supported Administrative Templates, you'll need to use the filter in Settings catalog.
 
 ## Compliance and Conditional access
 
@@ -154,7 +163,7 @@ You can secure your Windows 10 or Windows 11 Enterprise multi-session VMs by con
 
 All other policies report as **Not applicable**.
 
-> [!Important]
+> [!IMPORTANT]
 > You'll need to create a new compliance policy and target it to the device group containing your multi-session VMs. User-targeted compliance configurations aren't supported.
 
 [Conditional Access policies](../protect/conditional-access.md) support both user and device based configurations for Windows 10 or Windows 11 Enterprise multi-session.
@@ -170,9 +179,6 @@ All other policies report as **Not applicable**.
 You can configure profiles under Endpoint security for multi-session VMs by selecting Platform Windows 10, Windows 11, and Windows Server. If that Platform is not available, the profile is not supported on multi-session VMs.
 
 For more information, see [Manage device security with endpoint security policies in Microsoft Intune](../protect/endpoint-security-policy.md)
-
-> [!NOTE]
-> Tamper protection is not supported on Azure Virtual Desktop VMs today. This functionality will be enabled in a future release.
 
 ## Application deployment
 
@@ -231,6 +237,7 @@ Out of Box Experience (OOBE) enrollment isn't supported for Window 10 or Windows
 - Enrollment status page isn't supported.
 
 Windows 10 or Windows 11 Enterprise multi-session managed by Microsoft Intune isn't currently supported for China Sovereign Cloud.
+
 ## Troubleshooting
 
 The following sections provide troubleshooting guidance for common issues.
@@ -239,8 +246,8 @@ The following sections provide troubleshooting guidance for common issues.
 
 |Issue|Detail|
 |---------------|---------------------------------|
-|Enrollment of hybrid Azure AD joined virtual machine fails|<ul><li>Auto-enrollment is configured to use user credentials. Windows 10 or Windows 11 Enterprise multi-session virtual machines must be enrolled using device credentials.<li>The Azure Virtual Desktop agent you're using must be version 2944.1400 or later.<li>You've more than one MDM provider, which isn't supported.<li>Windows 10 or Windows 11 Enterprise multi-session VM is configured outside of a host pool. Microsoft Intune only supports VMs provisioned as part of a host pool.<li>The Azure Virtual Desktop host pool wasn't created through the Azure Resource Manager template.|
-|Enrollment of Azure AD joined virtual machine fails|<ul><li>The Azure Virtual Desktop agent you're using isn't updated. The agent must be version 2944.1400 or above.<li>Azure Virtual Desktop host pool wasn't created through the Azure Resource Manager template.|
+|Enrollment of Microsoft Entra hybrid joined virtual machine fails|<ul><li>Auto-enrollment is configured to use user credentials. Windows 10 or Windows 11 Enterprise multi-session virtual machines must be enrolled using device credentials.<li>The Azure Virtual Desktop agent you're using must be version 1.0.2944.1400 or later.<li>You've more than one MDM provider, which isn't supported.<li>Windows 10 or Windows 11 Enterprise multi-session VM is configured outside of a host pool. Microsoft Intune only supports VMs provisioned as part of a host pool.<li>The Azure Virtual Desktop host pool wasn't created through the Azure Resource Manager template.|
+|Enrollment of Microsoft Entra joined virtual machine fails|<ul><li>The Azure Virtual Desktop agent you're using isn't updated. The agent must be version 1.0.2944.1400 or above.<li>Azure Virtual Desktop host pool wasn't created through the Azure Resource Manager template.|
 
 ### Configuration issues
 
@@ -251,7 +258,7 @@ The following sections provide troubleshooting guidance for common issues.
 Configuration policy reports as Not applicable|Some policies aren't applicable to Azure Virtual Desktop VMs.|
 |Microsoft Edge/Microsoft Office ADMX policy doesn't show up when I apply the filter for Windows 10 or Windows 11 Enterprise multi-session edition|Applicability for these settings isn't based on the Windows version or edition but on whether those apps have been installed on the device. To add these settings to your policy, you may have to remove any filters applied in the settings picker.|
 |App configured to install in system context didn't apply|Confirm the app doesn't have a dependency or supersedence relationship on any apps configured to install in user context. User context apps aren't currently supported on Windows 10 or Windows 11 Enterprise multi-session.|
-|Update rings for Windows 10 and later policy didn't apply|Windows Update for Business policies aren't currently supported.|
+|Update rings for Windows 10 and later policy didn't apply|Windows update rings policies aren't currently supported. Quality updates can be managed via settings available in the [settings catalog](../configuration/settings-catalog.md).|
 
 ## Next steps
 

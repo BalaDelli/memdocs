@@ -4,15 +4,14 @@
 title: Overview of Certificate Connector for Microsoft Intune - Azure | Microsoft Docs
 description: Learn about the unified Certificate Connector for Microsoft Intune, which supports SCEP, PKCS, imported PKCS, and certificate revocation. 
 keywords:
-author: brenduns
-ms.author: brenduns
+author: lenewsad
+ms.author: lanewsad
 manager: dougeby
-ms.date: 02/14/2023
+ms.date: 09/19/2024
 ms.topic: how-to
 ms.service: microsoft-intune
 ms.subservice: protect
 ms.localizationpriority: high
-ms.technology:
 ms.assetid:
 
 # optional metadata
@@ -28,6 +27,8 @@ ms.custom: intune-azure
 ms.collection:
 - tier2
 - M365-identity-device-management
+- certificates
+- sub-certificates
 ---
 
 
@@ -80,6 +81,7 @@ The Certificate Connector for Microsoft Intune supports:
   - Each instance of the connector should be at the same version. Because the connector supports automatic updates to the newest version, updates can be managed for you by Intune.  
   - Your infrastructure supports redundancy and load balancing, as any available connector instance that supports the same connector features can process your certificate requests.
   - You can configure a proxy to allow the connector to communicate with Intune.
+  - Certificate Connector should not be installed on the same server as Intune Connector for Active Directory.
 
     >[!NOTE]
     > Any instance of the connector that supports PKCS can be used to retrieve pending PKCS requests from the Intune Service queue, process Imported certificates, and handle revocation requests. It's not possible to define which connector handles each request. </br></br>
@@ -91,15 +93,15 @@ Periodically, updates  to the certificate connector are released. Announcements 
 
 **Each new connector release**:
 
-- Is supported for six months after its release date. During this period, automatic updates can install a newer connector version. Updated connector versions can include but aren't limited to bug fixes and performance and feature improvements.
+- Is supported for six months after the release of a new version. During this period, automatic updates can install a newer connector version. Updated connector versions can include but aren't limited to bug fixes and performance and feature improvements.
 
 - If an out of support connector fails, you’ll need to update to the latest supported version.
 
 - If you block the automatic update of the connector, plan to manually update the connector within six months, before support for the installed version ends. After support ends, you’ll need to update the connector to a version that remains in support to receive support for problems with the connector.
 
-- Connectors that are out of support will continue to function for up to 18 months after its release date. After 18 months, a connectors functionality might fail due to service level improvements, updates, or in addressing common security vulnerabilities that might surface in the future.
+- Connectors that are out of support will continue to function for up to 18 months after the release of a new version. After 18 months, a connectors functionality might fail due to service level improvements, updates, or in addressing common security vulnerabilities that might surface in the future.
 
-For example, the connector version 6.2203.12.0 that released on May 4, 2022, will drop from support on November 4, 2022.  The same connector should continue to function (though not be supported) until November 2023. After November 2023 the connector might stop communicating with Intune.
+For example, when the connector version 6.2203.12.0 that released on May 4, 2022, the connector previous version 6.2202.38.0 will drop from support on November 4, 2022. The connector previous version should continue to function (though not be supported) until November 2023. After November 2023 the connector previous version might stop communicating with Intune.
 
 ### Automatic update
 
@@ -164,7 +166,7 @@ All events have one of the following IDs:
 
 ### Task Categories
 
-All events are tagged with a Task Category to aid in filtering.  Task categories contain but aren't limited to the following list:
+All events are tagged with a Task Category to aid in filtering. Task categories contain but aren't limited to the following list:
 
 **PKCS**  
 
@@ -385,6 +387,16 @@ New updates for the connector can take a week or more to become available for ea
 
 > [!IMPORTANT]  
 > Starting April 2022, certificate connectors earlier than version **6.2101.13.0** will be deprecated and will show a status of *Error*. Starting August 2022, these connector versions **won't** be able to revoke certificates. Starting September 2022, these connector versions **won't** be able to issue certificates. This includes both the [PFX Certificate Connector for Microsoft Intune](../protect/certificate-connectors.md#pfx-certificate-connector-release-history) and  [Microsoft Intune Connector](../protect/certificate-connectors.md#microsoft-intune-connector-release-history), which on July 29, 2021 were replaced by the *Certificate Connector for Microsoft Intune* (as detailed in this article).
+
+
+### September 19, 2024  
+
+Version **6.2406.0.1001** - Changes in this release:  
+
+- Changes to support KB5014754 requirements  
+- Improved PKCS import-pipeline logging   
+- Bug fixes  
+- Security improvements  
 
 ### February 15, 2023
 

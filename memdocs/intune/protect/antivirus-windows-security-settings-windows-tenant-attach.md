@@ -7,12 +7,11 @@ keywords:
 author: brenduns
 ms.author: brenduns
 manager: dougeby
-ms.date: 09/27/2021
+ms.date: 03/26/2024
 ms.topic: reference
 ms.service: microsoft-intune
 ms.subservice: protect
 ms.localizationpriority: medium
-ms.technology:
 
 # optional metadata
 
@@ -26,6 +25,7 @@ ms.custom: intune-azure
 ms.collection:
 - tier3
 - M365-identity-device-management
+- sub-secure-endpoints
 ms.reviewer: mattcall
 
 ---
@@ -99,7 +99,6 @@ The profile is available when you configure [Intune Endpoint security Antivirus 
 
   - **Not configured** (*default*)
   - **Enabled**
-  <!-- This setting appears to be incomplete in the UI at last check  -->
 
 - **Hide the Ransomware data recovery option in the Windows Security app**  
     CSP: [HideRansomwareDataRecovery](/windows/client-management/mdm/policy-csp-windowsdefendersecuritycenter#windowsdefendersecuritycenter-hideransomwaredatarecovery)

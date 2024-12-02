@@ -7,12 +7,11 @@ keywords:
 author: ErikjeMS  
 ms.author: erikje
 manager: dougeby
-ms.date: 10/25/2022
+ms.date: 08/28/2024
 ms.topic: overview
 ms.service: windows-365
-ms.subservice:
+ms.subservice: windows-365-enterprise
 ms.localizationpriority: high
-ms.technology:
 ms.assetid: 
 
 # optional metadata
@@ -32,9 +31,9 @@ ms.collection:
 
 # Digital forensics and Windows 365 Enterprise Cloud PCs
 
-Just like physical devices, Windows 365 Enterprise Cloud PCs can be deployed, secured, and managed using [Microsoft Endpoint Manager](/mem/endpoint-manager-overview). As part of PC ownership, you may be asked to submit Cloud PCs to internal or third parties to perform digital forensics. Digital forensics is the science that addresses the recovery and investigation of digital data to support criminal investigations or civil proceedings.
+Just like physical devices, Windows 365 Enterprise Cloud PCs can be deployed, secured, and managed using [Microsoft Intune](/mem/intune/fundamentals/what-is-intune). As part of PC ownership, you may be asked to submit Cloud PCs to internal or third parties to perform digital forensics. Digital forensics is the science that addresses the recovery and investigation of digital data to support criminal investigations or civil proceedings.
 
-To support these forensics, Windows 365 offers the ability to [place a Cloud PC under review](place-cloud-pc-under-review.md). This action will securely save a snapshot of the Cloud PC to the customer’s Azure Storage Account. When transferred to that account, the customer has complete ownership of the snapshot.
+To support these forensics, Windows 365 offers the ability to [place a Cloud PC under review](place-cloud-pc-under-review.md). This action will securely save a snapshot of the Cloud PC to the customer’s Azure Storage Account. When transferred to that account, the customer has complete ownership of the snapshot. To make the snapshot tamper-evident, the customer should create a file hash of the snapshot as soon as the snapshot has been saved in the Azure Storage account.
 
 Investigators can attach disk copies of the Cloud PC snapshot and transfer it to a secure storage account dedicated to forensic analysis. This process can be done without re-creating, powering on, or accessing the original source Cloud PC.
 
@@ -50,11 +49,11 @@ You may have to place a Cloud PC under review for any of these scenarios:
 
 In response to legal requests for data stored on a Cloud PC, admins must attest that digital evidence they provide demonstrates a valid Chain of Custody (CoC) throughout the evidence acquisition, preservation, and access process. For this reason, admins should make sure to support adequate:
 
-- access control
-- data protection and integrity
-- monitoring and alerting
-- logging and auditing
-
+- Access control. For more information about just-in-time access management, see [Best practices for Azure RBAC](/azure/role-based-access-control/best-practices) and [Start using Privileged Identity Management](/entra/id-governance/privileged-identity-management/pim-getting-started).
+- Data protection and integrity. Only the virtual network in the dedicated subscription containing the snapshot has access to the storage account and key vault that archives the evidence. For more information, see [Microsoft Purview Customer Key for Windows 365 Cloud PCs](/windows-365/enterprise/purview-customer-key)
+- Monitoring and alerting. For more information, see [Alert on privileged Azure role assignment](/azure/role-based-access-control/role-assignments-alert)
+- Logging and auditing, separation of duties. Only the small list of admins with access to the storage account can grant investigators temporary access (that was recorded and approved) to the evidence.
+  
 <!-- ########################## -->
 ## Next steps
 

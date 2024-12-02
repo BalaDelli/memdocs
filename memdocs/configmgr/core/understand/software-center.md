@@ -5,10 +5,10 @@ description: Learn about the features and functionality of Software Center
 ms.author: baladell 
 author: BalaDelli
 manager: apoorvseth
-ms.date: 06/10/2020
+ms.date: 10/18/2024
 ms.topic: end-user-help
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.localizationpriority: medium
 ms.collection: tier3
 ms.reviewer: mstewart,aaroncz 

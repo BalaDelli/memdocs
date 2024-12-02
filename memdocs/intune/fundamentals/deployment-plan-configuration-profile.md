@@ -7,7 +7,7 @@ description: Step 4 to deploy device configuration profiles as part of the minim
 author: MandiOhlinger
 ms.author: mandia
 manager: dougeby
-ms.date: 03/01/2023
+ms.date: 08/14/2024
 ms.topic: conceptual
 ms.service: microsoft-intune
 ms.subservice: configuration
@@ -29,7 +29,7 @@ ms.collection:
 
 # Step 4 - Configure device features and settings to secure devices and access resources
 
-So far, you've set up your Intune subscription, created app protection policies, and created device compliance policies.
+So far, you set up your Intune subscription, created app protection policies, and created device compliance policies.
 
 In this step, you're ready to configure a minimum or baseline set of security and device features that all devices must have.
 
@@ -42,7 +42,7 @@ This article applies to:
 - macOS
 - Windows
 
-When you create device configuration profiles, there are different levels and types of policies available. These levels are the minimum Microsoft recommended policies. Know that your environment and business needs may be different.
+When you create device configuration profiles, there are different levels and types of policies available. These levels are the minimum Microsoft recommended policies. Know that your environment and business needs can be different.
 
 - **Level 1 - Minimum device configuration**: In this level, Microsoft recommends you create policies that:
 
@@ -52,18 +52,18 @@ When you create device configuration profiles, there are different levels and ty
 - **Level 2 - Enhanced device configuration**: In this level, Microsoft recommends you create policies that:
 
   - Expand device security, including configuring disk encryption, enabling secure boot, and adding more password rules.
-  - Use the built-in features and templates to configure more settings that are important for your organization, including analyzing on-premises GPOs.
+  - Use the built-in features and templates to configure more settings that are important for your organization, including analyzing on-premises Group Policy Objects (GPOs).
 
 - **Level 3 - High device configuration**: In this level, Microsoft recommends you create policies that:
 
-  - Move to password-less authentication, including using certificates, configuring single sign-on (SSO) to apps, enabling multi-factor authentication (MFA), and configuring Microsoft Tunnel.
+  - Move to password-less authentication, including using certificates, configuring single sign-on (SSO) to apps, enabling multifactor authentication (MFA), and configuring Microsoft Tunnel.
   - Add extra layers of security using Android common criteria mode or creating DFCI policies for Windows devices.
   - Use the built-in features to configure kiosk devices, dedicated devices, shared devices, and other specialized devices.
   - Deploy existing shell scripts.
 
 This article lists the different levels of device configuration policies that organizations should use. Most of these policies in this article focus on access to organization resources and security.
 
-These features are configured in device configuration profiles in the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431). When the profiles are ready, they can be deployed from Intune to your devices.
+These features are configured in device configuration profiles in the [Microsoft Intune admin center](https://go.microsoft.com/fwlink/?linkid=2109431). When the Intune profiles are ready, they can be assigned to your users and devices.
 
 > [!TIP]
 > [Take a tour of Intune and the Microsoft Intune admin center](tutorial-walkthrough-endpoint-manager.md).
@@ -82,15 +82,11 @@ In your baseline, at a minimum, Microsoft recommends the following security poli
 
 This section lists the Intune and Microsoft services you can use to create these security policies.
 
-If you prefer a more granular list of settings and their recommended values, go to:
-
-- [Android Enterprise security configuration framework](../enrollment/android-configuration-framework.md)
-- [iOS/iPadOS personal device security configurations](../enrollment/ios-ipados-personal-device-security-configurations.md)
-- [Windows security baselines](../protect/security-baselines.md)
+For a more granular list of Windows settings and their recommended values, go to [Windows security baselines](../protect/security-baselines.md).  
 
 ### Antivirus and scanning
 
-✔️ **Install antivirus software and regularly scan for malware**
+✅ **Install antivirus software and regularly scan for malware**
 
 All devices should have antivirus software installed and be regularly scanned for malware. Intune integrates with third party partner mobile threat defense (MTD) services that provide AV and threat scanning. For macOS and Windows, antivirus and scanning are built in to Intune with Microsoft Defender for Endpoint.
 
@@ -116,7 +112,7 @@ For more information on these features, go to:
 
 ### Detection and response
 
-✔️ **Detect attacks and act on these threats**
+✅ **Detect attacks and act on these threats**
 
 When you detect threats quickly, you can help minimize the impact of the threat. When you combine these policies with Conditional Access, you can block users and devices from accessing organization resources if a threat is detected.
 
@@ -143,9 +139,9 @@ For more information on these features, go to:
 
 ### Firewall
 
-✔️ **Enable the firewall on all devices**
+✅ **Enable the firewall on all devices**
 
-Some platforms come with a built-in firewall and on others, you may have to install a firewall separately. Intune integrates with third party partner mobile threat defense (MTD) services that can manage a firewall for Android and iOS/iPadOS devices. For macOS and Windows, firewall security is built in to Intune with Microsoft Defender for Endpoint.
+Some platforms come with a built-in firewall and on others, you might have to install a firewall separately. Intune integrates with third party partner mobile threat defense (MTD) services that can manage a firewall for Android and iOS/iPadOS devices. For macOS and Windows, firewall security is built in to Intune with Microsoft Defender for Endpoint.
 
 Your policy options:
 
@@ -167,7 +163,7 @@ For more information on these features, go to:
 
 ### Password policy
 
-✔️ **Create a strong password/PIN policy and block simple passcodes**
+✅ **Create a strong password/PIN policy and block simple passcodes**
 
 PINs unlock devices. On devices that access organization data, including personally owned devices, you should require strong PINs/passcodes and support biometrics to unlock devices. Using biometrics is part of a password-less approach, which is recommended.
 
@@ -178,7 +174,7 @@ Your policy options:
 | Platform | Policy type |
 | --- | --- |
 | Android Enterprise | Intune device restrictions profile to manage the: <br/>- Device password<br/>- Work profile password |
-| AOSP | Intune device restrictions profile |
+| Android Open-Source Project (AOSP) | Intune device restrictions profile |
 | iOS/iPadOS | Intune device restrictions profile |
 | macOS | Intune device restrictions profile |
 | Windows client | - Intune security baselines (recommended) </br>- Intune device restrictions profile |
@@ -199,9 +195,9 @@ For a list of the settings you can configure, go to:
 
 ### Software updates
 
-✔️ **Regularly install software updates**
+✅ **Regularly install software updates**
 
-All devices should be updated regularly and policies should be created to make sure these updates are successfully installed. For most platforms, Intune has dedicated policies that focus on managing and installing updates.
+All devices should be updated regularly and policies should be created to make sure these updates are successfully installed. For most platforms, Intune has policy settings that focus on managing and installing updates.
 
 Your policy options:
 
@@ -230,33 +226,33 @@ This section focuses on accessing resources in your organization. These resource
 - VPN connection for remote connectivity
 - Wi-Fi connection for on-premises connectivity
 
-:::image type="content" source="./media/deployment-plan-configuration-profile/deploy-email-vpn-wifi.png" alt-text="Diagram that shows an email, VPN and Wi-Fi profiles deployed from Microsoft Intune to end user devices.":::
+:::image type="content" source="./media/deployment-plan-configuration-profile/deploy-email-vpn-wifi.png" alt-text="Diagram that shows an email, VPN, and Wi-Fi profiles deployed from Microsoft Intune to end user devices.":::
 
 ### Email
 
 Many organizations deploy email profiles with preconfigured settings to user devices.
 
-✔️ **Automatically connect to user email accounts**
+✅ **Automatically connect to user email accounts**
 
 The profile includes the email configuration settings that connect to your email server.
 
 Depending on the settings you configure, the email profile can also automatically connect the users to their individual email account settings.
 
-✔️ **Use enterprise level email apps**
+✅ **Use enterprise level email apps**
 
-Email profiles in Intune use common and popular email apps, like Outlook. The email app is deployed to user devices. After it's deployed, you deploy the email device configuration profile with the settings that configure the email app.
+Email profiles in Intune use common and popular email apps, like Outlook. The email app is deployed to user devices. After the app is deployed, you deploy the email device configuration profile with the settings that configure the email app.
 
 The email device configuration profile includes settings that connect to your Exchange.
 
-✔️ **Access work or school email**
+✅ **Access work or school email**
 
 Creating an email profile is a common minimum baseline policy for organizations with users that use email on their devices.
 
-Intune has built in email settings for Android, iOS/iPadOS, and Windows client devices. When users open their email app, they can automatically connect, authenticate, and synchronize their organizational email accounts on their devices.
+Intune has built-in email settings for Android, iOS/iPadOS, and Windows client devices. When users open their email app, they can automatically connect, authenticate, and synchronize their organizational email accounts on their devices.
 
-✔️ **Deploy anytime**
+✅ **Deploy anytime**
 
-On new devices, it's recommended to deploy the email app during the enrollment process. When enrollment completes, then deploy the email device configuration policy.
+On new devices, we recommended you deploy the email app during the enrollment process. When enrollment completes, then deploy the email device configuration policy.
 
 If you have existing devices, then deploy the email app at any time, and deploy the email device configuration policy.
 
@@ -287,25 +283,25 @@ Many organizations deploy VPN profiles with preconfigured settings to user devic
 
 If your organization uses cloud services with modern authentication and secure identities, then you probably don't need a VPN profile. Cloud-native services don't require a VPN connection.
 
-If your apps or services aren't cloud-based or aren't cloud-native, then it's recommended to deploy a VPN profile to connect to your internal organization network.
+If your apps or services aren't cloud-based or aren't cloud-native, then deploy a VPN profile to connect to your internal organization network.
 
-✔️ **Work from anywhere**
+✅ **Work from anywhere**
 
 Creating a VPN profile is a common minimum baseline policy for organizations with remote workers and hybrid workers.
 
 As users work from anywhere, they can use the VPN profile to securely connect to your organization's network to access resources.
 
-Intune has built in VPN settings for Android, iOS/iPadOS, macOS, and Windows client devices. On user devices, your VPN connection is shown as an available connection. Users select it. And, depending on the settings in your VPN profile, users can automatically authenticate and connect to the VPN on their devices.
+Intune has built-in VPN settings for Android, iOS/iPadOS, macOS, and Windows client devices. On user devices, your VPN connection is shown as an available connection. Users select it. And, depending on the settings in your VPN profile, users can automatically authenticate and connect to the VPN on their devices.
 
-✔️ **Use enterprise level VPN apps**
+✅ **Use enterprise level VPN apps**
 
 VPN profiles in Intune use common enterprise VPN apps, like Check Point, Cisco, Microsoft Tunnel, and more. The VPN app is deployed to user devices. After the app is deployed, then you deploy the VPN connection profile with settings that configure the VPN app.
 
 The VPN device configuration profile includes settings that connect to your VPN server.
 
-✔️ **Deploy anytime**
+✅ **Deploy anytime**
 
-On new devices, it's recommended to deploy the VPN app during the enrollment process. When enrollment completes, then deploy the VPN device configuration policy.
+On new devices, we recommended you deploy the VPN app during the enrollment process. When enrollment completes, then deploy the VPN device configuration policy.
 
 If you have existing devices, deploy the VPN app at any time, and then deploy the VPN device configuration policy.
 
@@ -332,21 +328,21 @@ To get started:
 
 Many organizations deploy Wi-Fi profiles with preconfigured settings to user devices. If your organization has a remote-only workforce, then you don't need to deploy Wi-Fi connection profiles. Wi-Fi profiles are optional and are used for on-premises connectivity.
 
-✔️ **Connect wirelessly**
+✅ **Connect wirelessly**
 
 As users work from different mobile devices, they can use the Wi-Fi profile to wirelessly and securely connect to your organization's network.
 
 The profile includes the Wi-Fi configuration settings that automatically connect to your network and/or SSID (service set identifier). Users don't have to manually configure their Wi-Fi settings.
 
-✔️ **Support mobile devices on-premises**
+✅ **Support mobile devices on-premises**
 
 Creating a Wi-Fi profile is a common minimum baseline policy for organizations with mobile devices that work on-premises.
 
-Intune has built in Wi-Fi settings for Android, iOS/iPadOS, macOS, and Windows client devices. On user devices, your Wi-Fi connection is shown as an available connection. Users select it. And, depending on the settings in your Wi-Fi profile, users can automatically authenticate and connect to the Wi-Fi on their devices.
+Intune has built-in Wi-Fi settings for Android, iOS/iPadOS, macOS, and Windows client devices. On user devices, your Wi-Fi connection is shown as an available connection. Users select it. And, depending on the settings in your Wi-Fi profile, users can automatically authenticate and connect to the Wi-Fi on their devices.
 
-✔️ **Deploy anytime**
+✅ **Deploy anytime**
 
-On new devices, it's recommended to deploy the Wi-Fi device configuration policy when devices enroll in Intune.
+On new devices, we recommended you deploy the Wi-Fi device configuration policy when devices enroll in Intune.
 
 If you have existing devices, you can deploy the Wi-Fi device configuration policy at any time.
 
@@ -366,7 +362,7 @@ To get started:
 
 ## Level 2 - Enhanced protection and configuration
 
-This level expands on what you've configured in level 1 and adds more security for your devices. In this section, you create a level 2 set of policies that configure more security settings for your devices.
+This level expands on what you configured in level 1 and adds more security for your devices. In this section, you create a level 2 set of policies that configure more security settings for your devices.
 
 Microsoft recommends the following level 2 security policies:
 
@@ -389,7 +385,7 @@ Microsoft recommends the following level 2 security policies:
 
   For more specific information, go to [Introduction to Apple platform security](https://support.apple.com/guide/security/intro-to-apple-platform-security-seccd5016d31/web) and [Secure Enclave](https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web) (opens Apple's web site).
 
-  There are Intune policies that focus on password settings and encrypting backups.
+  There are Intune policy settings that focus on [password settings and encrypting backups](../configuration/device-restrictions-ios.md).
 
   # [macOS](#tab/macos-disk)
 
@@ -462,17 +458,17 @@ Microsoft recommends the following level 2 security policies:
 
     - Windows
 
-- If you use **on-premises GPOs** and want to know if these same settings are available in Intune, then use Group Policy analytics. This feature analyzes your GPOs and depending on the analysis, can import them into an Intune settings catalog policy.
+- If you use **on-premises GPOs** and want to know if these same settings are available in Intune, then use [Group Policy analytics](../configuration/group-policy-analytics.md). This feature analyzes your GPOs and depending on the analysis, can import them into an Intune settings catalog policy.
 
   For more information, go to [Analyze your on-premises GPOs and import them in Intune](../configuration/group-policy-analytics.md).
 
 ## Level 3 - High protection and configuration
 
-This level expands on what you've configured in levels 1 and 2. It adds extra security features used in enterprise level organizations.
+This level expands on what you configured in levels 1 and 2. It adds extra security features used in enterprise level organizations.
 
 - **Expand password-less authentication** to other services used by your workforce. In level 1, you enabled biometrics so users can sign in to their devices with a fingerprint or facial recognition. In this level, expand password-less to other parts of the organization.
 
-  - **Use certificates to authenticate** email, VPN, and Wi-Fi connections. Certificates are deployed to users and devices, and are then used by users to get access to resources in your organization through these email, VPN, and Wi-Fi connections.
+  - **Use certificates to authenticate** email, VPN, and Wi-Fi connections. Certificates are deployed to users and devices, and are then used by users to get access to resources in your organization through the email, VPN, and Wi-Fi connections.
 
     To learn more about using certificates in Intune, go to:
 
@@ -481,23 +477,41 @@ This level expands on what you've configured in levels 1 and 2. It adds extra se
 
   - **Configure single sign-on** (SSO) for a more seamless experience when users open business apps, like Microsoft 365 apps. Users sign-in once and then are automatically signed-in to all the apps that support your SSO configuration.
 
-    To learn about using SSO in Intune and Azure AD, go to:
+    To learn about using SSO in Intune and Microsoft Entra ID, go to:
 
-    - [**Android**: Enable cross-app SSO on Android using MSAL in Azure AD](/azure/active-directory/develop/msal-android-single-sign-on)
+    - [**Android**: Enable cross-app SSO on Android using MSAL in Microsoft Entra ID](/azure/active-directory/develop/msal-android-single-sign-on)
     - [**iOS/iPadOS, macOS**: Use the Enterprise SSO plug-in in Intune and other MDMs](../configuration/use-enterprise-sso-plug-in-ios-ipados-macos.md)
-    - [**Windows**: Configure SSO with Azure AD](/azure/active-directory/manage-apps/what-is-single-sign-on)
+    - [**Windows**: Configure SSO with Microsoft Entra ID](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-  - **Use multi-factor authentication** (MFA). When you move to password-less, MFA adds an extra layer of security, and can help protect your organization from phishing attacks. You can use MFA with authenticator apps, like Microsoft Authenticator, or with a phone call or text message. You can also use MFA when users enroll their devices in Intune.
+  - **Use multifactor authentication** (MFA). When you move to password-less, MFA adds an extra layer of security, and can help protect your organization from phishing attacks. You can use MFA with authenticator apps, like Microsoft Authenticator, or with a phone call or text message. You can also use MFA when users enroll their devices in Intune.
 
-    Multi-factor authentication is a feature of Azure AD and can be used with Azure AD accounts. For more information, go to:
+    Multifactor authentication is a feature of Microsoft Entra ID and can be used with Microsoft Entra accounts. For more information, go to:
 
-    - [Azure AD identity protection overview](/azure/active-directory/identity-protection/overview-identity-protection)
-    - [Azure AD multi-factor authentication](/azure/active-directory/authentication/concept-mfa-howitworks)
-    - [Require multi-factor authentication for Intune device enrollments](../enrollment/multi-factor-authentication.md)
+    - [Microsoft Entra ID Protection overview](/azure/active-directory/identity-protection/overview-identity-protection)
+    - [Microsoft Entra multifactor authentication](/azure/active-directory/authentication/concept-mfa-howitworks)
+    - [Require multifactor authentication for Intune device enrollments](../enrollment/multi-factor-authentication.md)
 
   - **Set up Microsoft Tunnel** for your Android and iOS/iPadOS devices. Microsoft Tunnel uses Linux to allow these devices access to on-premises resources using modern authentication and Conditional Access.
 
-    Microsoft Tunnel uses Intune, Azure AD, and Active Directory Federation Services (AD FS). For more information, go to [Microsoft Tunnel for Microsoft Intune](../protect/microsoft-tunnel-overview.md).
+    Microsoft Tunnel uses Intune, Microsoft Entra ID, and Active Directory Federation Services (AD FS). For more information, go to [Microsoft Tunnel for Microsoft Intune](../protect/microsoft-tunnel-overview.md).
+
+  - In addition to Microsoft Tunnel for devices enrolled with Intune, you can use **Microsoft Tunnel for Mobile Application Management** (Tunnel for MAM) to extend tunnel capabilities to Android and iOS/iPad devices that are *not enrolled* with Intune. [Tunnel for MAM](../protect/microsoft-tunnel-mam.md) is available as an Intune add-on that requires an extra license.
+
+    For more information, go to [Use Intune Suite add-on capabilities](../fundamentals/intune-add-ons.md).
+
+- **Use Windows Local Administrator Password Solution (LAPS) policy** to manage and back up the built-in local administrator account on your Windows devices. Because the local admin account can't be deleted and has full permissions to the device, management of the built-in Windows administrator account is an important step in securing your organization. Intune policy for Windows LAPS uses the capabilities that are available for Windows devices that run version 21h2 or later.
+
+  For more information, go to [Intune support for Windows LAPS](../protect/windows-laps-overview.md).
+
+- Use **Microsoft Intune Endpoint Privilege Management** (EPM) to reduce the attack surface of your Windows devices. EPM empowers you to have users that run as standard users (without administrator rights) yet remain productive by determining when those users can run apps in an elevated context.
+
+  EPM elevation rules can be based on file hashes, certificate rules, and more. The rules you configure help to ensure that only the expected and trusted applications you allow can run as elevated. Rules can:
+
+  - Manage the child processes that an app creates.
+  - Support requests by users to elevate a managed process.
+  - Allow for automatic elevations of files that just need to run without any user interruption.
+
+  [Endpoint Privilege Management](../protect/epm-overview.md) is available as an Intune add-on that requires an extra license. For more information, go to [Use Intune Suite add-on capabilities](../fundamentals/intune-add-ons.md).
 
 - **Use Android Common Criteria mode** on Android devices that are used by highly sensitive organizations, like government establishments.
 
@@ -511,13 +525,15 @@ This level expands on what you've configured in levels 1 and 2. It adds extra se
 
   # [Android](#tab/android-kiosk)
 
+  - **Android Enterprise**:
+    - [Use and manage Android Enterprise devices with OEMConfig](../configuration/android-oem-configuration-overview.md)
+    - [Dedicated devices that run as a kiosk device settings](../configuration/device-restrictions-android-for-work.md#dedicated-devices)
+
   - **Android device administrator**
     - [Use and manage Zebra devices with Zebra Mobility Extensions](../configuration/android-zebra-mx-overview.md)
     - [Device settings to run as a kiosk](../configuration/device-restrictions-android.md#kiosk)
 
-  - **Android Enterprise**:
-    - [Use and manage Android Enterprise devices with OEMConfig](../configuration/android-oem-configuration-overview.md)
-    - [Dedicated devices that run as a kiosk device settings](../configuration/device-restrictions-android-for-work.md#dedicated-devices)
+      [!INCLUDE [android_device_administrator_support](../includes/android-device-administrator-support.md)]
 
   # [iOS/iPadOS](#tab/ios-kiosk)
 

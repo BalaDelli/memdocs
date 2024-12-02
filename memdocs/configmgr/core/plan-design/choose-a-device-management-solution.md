@@ -3,8 +3,8 @@ title: Choose a device management solution
 titleSuffix: Configuration Manager
 description: Learn about the solutions that Microsoft offers for managing PCs, servers, and devices.
 ms.date: 03/30/2023
-ms.prod: configuration-manager
-ms.technology: configmgr-core
+ms.subservice: core-infra
+ms.service: configuration-manager
 ms.topic: conceptual
 author: Banreet
 ms.author: banreetkaur
@@ -106,9 +106,9 @@ For more information, see [Manage mobile devices with Configuration Manager and 
 For a complete list of supported platforms, see the following articles:
 
 - [Supported operating systems for clients and devices for Configuration Manager](configs/supported-operating-systems-for-clients-and-devices.md)
-- [Intune supported configurations](/intune/supported-devices-browsers)
+- [Intune supported configurations](/mem/intune/fundamentals/supported-devices-browsers)
 
-Microsoft recommends using Intune to manage Android, iOS, and Windows 10/11 mobile devices. For more information, see [What is Microsoft Intune?](/intune/what-is-intune).
+Microsoft recommends using Intune to manage Android, iOS, and Windows 10/11 mobile devices. For more information, see [What is Microsoft Intune?](/mem/intune/fundamentals/what-is-intune).
 
 ### <a name="bkmk_comp2"></a> Compare solutions by management functionality  
 

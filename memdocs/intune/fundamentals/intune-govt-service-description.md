@@ -1,15 +1,14 @@
 ---
 # required metadata
 
-title: Microsoft Intune Government Service Description  
-description: Intune Government Service Description is designed to serve as an overview of the Microsoft Intune offering for GCC High and DoD environments.
+title: Microsoft Intune Government Service overview
+description: Learn more about the Intune government service offerings and features. This article is designed to serve as an overview of the Microsoft Intune offering for government community cloud (GCC) High and United States Department of Defense (DoD) environments.
 keywords:
-author: dougeby
-ms.author: dougeby
-manager: johmar
-ms.date: 03/20/2023
+author: MandiOhlinger
+ms.author: mandia
+manager: dougeby
+ms.date: 10/30/2024
 ms.topic: article
-ms.prod:
 ms.service: microsoft-intune
 ms.suite: ems
 
@@ -26,7 +25,9 @@ ms.collection:
 > [!NOTE]
 > This article applies to Microsoft Intune features only. If you're looking for information on other features, then go to that specific documentation. For example, for Microsoft Teams devices, go to [Teams Rooms on Windows and Android](/microsoftteams/rooms/teams-devices-feature-comparison).
 
-The Intune U.S. government service description is as an overview of the service offering in the GCC High and DoD environments. It lists the feature differences compared to the commercial offering of Microsoft Intune.
+The Intune U.S. government service description is as an overview of the service offering in the Government Community Cloud (GCC) High and U.S. Department of Defense (DoD) environments.
+
+This article lists the feature differences compared to the commercial offering of Microsoft Intune.
 
 To learn more about Intune for GCC customers, go to [EMS offers for US Government and Microsoft 365 interoperability](/enterprise-mobility-security/solutions/ems-govt-service-description#ems-offers-for-us-government-and-microsoft-365-interoperability).
 
@@ -35,7 +36,7 @@ To learn more about Intune for GCC customers, go to [EMS offers for US Governmen
 
 ## Get started with Intune for US Government GCC High and DoD
 
-The Intune GCC High and DoD offering are built on the Microsoft Azure Government Cloud. It's designed to interoperate with Microsoft 365 GCC High and DoD environments.
+The Intune GCC High and DoD offerings are built on the Microsoft Azure Government Cloud. This cloud is designed to interoperate with Microsoft 365 GCC High and DoD environments.
 
 For more information about Intune, and what you can do, go to [Microsoft Intune securely manages identities, manages apps, and manages devices](what-is-intune.md). Use this documentation as your starting point for deploying and using Microsoft Intune.
 
@@ -52,41 +53,46 @@ These government instances are also known as **IL4** and **IL5**, where **IL** r
 
 - There isn't a built-in way to migrate from the commercial service to the government cloud, and vice versa. To migrate, devices need to unenroll from the current tenant, and then re-enroll to the new tenant.
 
-  This approach is similar to unenrolling from another MDM service and enrolling in Intune. For more information, go to [Deployment guide: Setup or move to Microsoft Intune](deployment-guide-intune-setup.md#currently-use-a-third-party-mdm-provider).
+  This approach is similar to unenrolling from another mobile device management (MDM) service and enrolling in Intune. For more information, go to [Deployment guide: Setup or move to Microsoft Intune](deployment-guide-intune-setup.md#currently-use-a-third-party-mdm-provider).
 
 - In the government cloud, the Intune service instance is shared with GCC High and DoD tenants. This architecture is slightly different than other services, such as Microsoft 365 and Azure.
 
-- For Intune, there isn't a "GCC" instance. Other services offer a "GCC" instance. GCC instances are commonly used by state and local government customers that require extra accreditation for the cloud services they use.
+- GCC is the same instance as Microsoft Intune in the commercial space. Other services, like Microsoft 365, have a separate GCC instance. Intune doesn't have a separate GCC instance.
+
+  So, when you see **GCC** in this Intune article, it refers to the commercial service. When you see **GCC High** or **DoD**, it refers to the government cloud.
+
+  GCC instances are commonly used by state and local government customers that require extra accreditation for the cloud services they use.
 
 ## Feature differences in Intune GCC High and DoD
 
 ### Available and supported
 
-The following features are available and supported in GCC High and DoD clouds:
+The following features are available and supported in Microsoft GCC High and/or DoD clouds:
 
 | Feature | Availability |
 | --- | --- |
-| Standard MDM features | ✔️ <br/><br/> You can use app policies, device configuration profiles, compliance policies, and more. |
-| Mobile Threat Defense (MTD) | ✔️ <br/><br/>Mobile Threat Defense (MTD) connectors for Android and iOS/iPadOS devices with MTD vendors that **also support** the government environment can be used. When you sign in to a GCC-H tenant, you'll see the connectors enabled for those specific vendors. |
-| Android (AOSP) | ✔️ <br/><br/> For more information on the supported Android open source project (AOSP) devices, go to [Supported operating systems and browsers in Intune - AOSP](supported-devices-browsers.md#android). |
+| Standard MDM features | ✅ <br/><br/> You can use app policies, device configuration profiles, compliance policies, and more. |
+| Mobile Threat Defense (MTD) | ✅ <br/><br/>Mobile Threat Defense (MTD) connectors for Android and iOS/iPadOS devices with MTD vendors that **also support** the GCC High environment can be used. When you sign in to a GCC High tenant, you see the connectors that are available in these environments. |
+| Microsoft Defender for Endpoint security settings management | ✅ <br/><br/> On devices onboarded to Defender but not enrolled in Intune, you can use Intune endpoint security policies to manage Defender security settings. <br/><br/>This support extends to the US Government Community Cloud (GCC), US Government Community High (GCC High), and Department of Defense (DoD) environments. <br/><br/>For more information on this feature, go to [Defender for Endpoint security settings management](../protect/mde-security-integration.md). |
+| Platform support | ✅ <br/><br/> You can use the same operating systems - Android, AOSP, iOS/iPadOS, Linux, macOS, and Windows. <br/><br/>- **Android (AOSP)**: There are some device restrictions. For more information, go to [Supported operating systems and browsers in Intune - AOSP](supported-devices-browsers.md#android). <br/>- **Linux**: Generally available (GA) in February 2024.|
+| Remote Help | ✅ <br/><br/> Remote Help is supported in GCC on Android, macOS, and Windows devices. It's not supported in GCC High or DoD.<br/><br/> For more information on this feature, go to [Remote Help in Microsoft Intune](../fundamentals/remote-help.md). |
+| Windows Autopilot device preparation | ✅ <br/><br/> Some features are available now, such as user-driven deployments, and some are still [in the planning phase](#in-the-planning-phase). For more information on the recent changes to Windows Autopilot device preparation, go to [Blog: Windows deployment with the next generation of Windows Autopilot](https://techcommunity.microsoft.com/t5/microsoft-intune-blog/windows-deployment-with-the-next-generation-of-windows-autopilot/ba-p/4148169). <br/><br/> To get started with Windows Autopilot device preparation, go to [Windows Autopilot Device Preparation overview](/autopilot/device-preparation/overview). |
+| Log Analytics | ✅ <br/><br/> You can send Intune log data to Azure Storage, Event Hubs, or Log Analytics. <br/><br/> For more information on this feature, go to [Send log data to storage, event hubs, or log analytics from Intune](review-logs-using-azure-monitor.md). |
+| Microsoft Intune Plan 2 </br>and Microsoft Intune Suite | For more information on these plans, go to [Use Intune Suite add-on capabilities](intune-add-ons.md). <br/><br/> The following Plan 2 features support the GCC High and DoD environments: </br>- [Microsoft Tunnel for Mobile Application Management](../protect/microsoft-tunnel-mam.md) </br>- [Firmware-over-the-air update](../protect/fota-updates-android.md) </br>- [Specialty devices management](../fundamentals/specialty-devices-with-intune.md) </br></br>  The following Microsoft Intune Suite features support the GCC High and DoD environments: </br>- [Endpoint Privilege Management](../protect/epm-overview.md) </br>- [Advanced Analytics](../../analytics/advanced-endpoint-analytics.md)
 
 ### In the planning phase
 
-The following features are currently not available and aren't supported in GCC High and DoD clouds. Planning is underway to support these features for GCC High and DoD. There is no ETA.
+The following features are currently not available and aren't supported in GCC High and DoD clouds. Planning is underway to support these features for GCC High and DoD. If ETAs are available, then they're listed.
 
 | Feature | Availability |
 | --- | --- |
-| Endpoint Analytics | :::image type="icon" source="../media/icons/i-article.png"::: For more information on this feature, go to </br>[Endpoint analytics overview](../../analytics/overview.md). |
-| Expedited updates | :::image type="icon" source="../media/icons/i-article.png"::: For more information on this feature, go to </br>[Expedite Windows quality updates in Microsoft Intune](../protect/windows-10-expedite-updates.md). |
-| Feature updates | :::image type="icon" source="../media/icons/i-article.png"::: For more information on this feature, go to </br>[Feature updates for Windows in Intune](../protect/windows-10-feature-updates.md). |
-| Linux devices | :::image type="icon" source="../media/icons/i-article.png"::: For more information on Linux devices management, go to </br>[Deployment guide: Manage Linux devices in Microsoft Intune](deployment-guide-platform-linux.md). |
-| Log Analytics |  :::image type="icon" source="../media/icons/i-article.png"::: For more information on this feature, go to </br>[Send log data to storage, event hubs, or log analytics from Intune](review-logs-using-azure-monitor.md). |
-| Microsoft Intune Plan 2 </br>and Microsoft Intune Suite | :::image type="icon" source="../media/icons/i-article.png"::: For more information on these plans, go to </br>[Microsoft Intune Plans and Pricing](https://www.microsoft.com/security/business/microsoft-intune-pricing). |
-| Windows Autopilot | :::image type="icon" source="../media/icons/i-article.png"::: For more information on this feature, go to </br>[Windows Autopilot overview](../../autopilot/windows-autopilot.md). |
+| Expedited updates | For more information on this feature, go to [Expedite Windows quality updates in Microsoft Intune](../protect/windows-10-expedite-updates.md). |
+| Feature updates | For more information on this feature, go to [Feature updates for Windows in Intune](../protect/windows-10-feature-updates.md). |
+| Windows Autopilot | The following features are in the planning phase: </br></br>- Customize out-of-box experience (OOBE) and rename devices during provisioning based on organizational structure </br>- Self-deploying and pre-provisioning mode </br> - More admin-specified configurations delivered before allowing desktop access. </br> - Enhanced optional desktop onboarding experience inside the Windows Company Portal app </br> - The ability to associate a device with a tenant. </br></br>For information about Windows Autopilot, go to [Windows Autopilot overview](/autopilot/overview). |
 
 ### Not available
 
-The following features are not available and will not be supported for GCC High and DoD:
+The following features aren't available and won't be supported for GCC High and DoD:
 
 | Feature | Availability |
 | --- | --- |

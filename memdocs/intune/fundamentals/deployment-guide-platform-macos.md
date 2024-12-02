@@ -7,7 +7,7 @@ keywords:
 author: lenewsad
 ms.author: lanewsad
 manager: dougeby
-ms.date: 08/16/2021
+ms.date: 06/27/2024
 ms.topic: conceptual
 ms.service: microsoft-intune
 ms.subservice: fundamentals
@@ -40,8 +40,9 @@ Complete the following prerequisites to enable macOS device management in Intune
 * [Add users](users-add.md) and [groups](groups-add.md)
 * [Assign licenses to users](licenses-assign.md) 
 * [Set mobile device management authority](mdm-authority-set.md) 
-* [Have Global Administrator or Intune administrator Azure Active Directory permissions](role-based-access-control.md)  
 * [Set up Apple MDM push (APNs) certificate](../enrollment/apple-mdm-push-certificate-get.md)  
+
+For information about Microsoft Intune roles and permissions, see [RBAC with Microsoft Intune](../fundamentals/role-based-access-control.md). The Microsoft Entra [Global Administrator and Intune Administrator](/entra/identity/role-based-access-control/permissions-reference) roles have full rights within Microsoft Intune. The Global Administrator has more permissions than needed for many device management tasks in Microsoft Intune. We recommend you use the least privileged role that's needed to complete tasks. For example, the least privileged role that can complete device enrollment tasks is the *Policy and Profile Manager*, a built-in Intune role.  
 
  For more detailed information about how to do the initial setup, onboard, or move to Microsoft Intune, see the [Intune setup deployment guide](deployment-guide-intune-setup.md).    
 
@@ -66,7 +67,7 @@ Configure the enrollment methods and experience for company-owned and personal m
 
 ## Create compliance rules  
 
-Create compliance policies to define the rules and conditions that users and devices must meet to access your protected resources. This is how you ensure that devices accessing your data meet your standards. Intune marks devices that fall short of your requirements as *non-compliant* and takes action (such as sending the user a notification, restricting access, or wiping the device) according to your configurations.  
+Create compliance policies to define the rules and conditions that users and devices must meet to access your protected resources. This is how you ensure that devices accessing your data meet your standards. Intune marks devices that fall short of your requirements as *noncompliant* and takes action (such as sending the user a notification, restricting access, or wiping the device) according to your configurations.  
 
 If you create a Conditional Access policy, it can work alongside your device compliance results to block access to resources from noncompliant devices. For a detailed explanation about compliance policies and how to get started, see [Use compliance policies to set rules for devices you manage with Intune](../protect/device-compliance-get-started.md).  
 
@@ -75,7 +76,7 @@ If you create a Conditional Access policy, it can work alongside your device com
 | [Create a compliance policy](../protect/create-compliance-policy.md)|Get step-by-step guidance on how to create and assign a compliance policy to user and device groups.   |       
 | [Add actions for noncompliance](../protect/actions-for-noncompliance.md) |Choose what happens when devices no longer meet the conditions of your compliance policy. You can add actions for noncompliance when you configure a device compliance policy, or later by editing the policy.    |  
 | Create [a device-based](../protect/create-conditional-access-intune.md) or [app-based](../protect/app-based-conditional-access-intune-create.md) Conditional Access policy| Specify the app or services you want to protect and define the conditions for access. |  
-|[Block access to apps that don't use modern authentication](../protect/app-modern-authentication-block.md)  | Create an app-based Conditional Access policy to block apps that use authentication methods other than OAuth2; for example, those apps that use basic and form-based authentication. Before you block access, however, sign in to Azure AD and review the [authentication methods activity report](/azure/active-directory/authentication/howto-authentication-methods-activity) to see if users are using basic authentication to access essential things you forgot about or are unaware of.  For example, things like meeting room calendar kiosks use basic authentication.  |  
+|[Block access to apps that don't use modern authentication](../protect/app-modern-authentication-block.md)  | Create an app-based Conditional Access policy to block apps that use authentication methods other than OAuth2; for example, those apps that use basic and form-based authentication. Before you block access, however, sign in to Microsoft Entra ID and review the [authentication methods activity report](/azure/active-directory/authentication/howto-authentication-methods-activity) to see if users are using basic authentication to access essential things you forgot about or are unaware of.  For example, things like meeting room calendar kiosks use basic authentication.  |  
 
 
 ## Configure device settings     
@@ -159,5 +160,3 @@ After devices are set up, you can use remote actions in Intune to manage and tro
     *  [Deployment guide: Manage Android devices in Microsoft Intune](deployment-guide-platform-android.md)  
     *  [Deployment guide: Manage iOS devices in Microsoft Intune](deployment-guide-platform-ios-ipados.md)  
   
-
-

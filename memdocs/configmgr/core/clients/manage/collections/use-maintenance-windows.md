@@ -3,8 +3,8 @@ title: Use maintenance windows
 titleSuffix: Configuration Manager
 description: Use collections and maintenance windows to effectively manage clients in Configuration Manager.
 ms.date: 08/01/2021
-ms.prod: configuration-manager
-ms.technology: configmgr-client
+ms.subservice: client-mgt
+ms.service: configuration-manager
 ms.topic: how-to
 author: gowdhamankarthikeyan
 ms.author: gokarthi
@@ -103,3 +103,25 @@ You can use PowerShell to configure maintenance windows. For more information, s
 - [New-CMMaintenanceWindow](/powershell/module/configurationmanager/new-cmmaintenancewindow)
 - [Remove-CMMaintenanceWindow](/powershell/module/configurationmanager/remove-cmmaintenancewindow)
 - [Set-CMMaintenanceWindow](/powershell/module/configurationmanager/set-cmmaintenancewindow)
+
+
+## Known Issues
+
+### Using Offset Maintenance Windows in the last week of the month
+
+<!-- 25140298 -->
+<!-- 29197708 -->
+
+Offset Maintenance Windows scheduled in the last week of the month may encounter the following scheduling discrepancies:
+
+- If the offset value causes the start date to fall in the following month, it will be adjusted to the end of the current month.
+- If the offset value causes the start date to fall on the last day of the current month, no Maintenance Window will be scheduled for that month.
+
+### UTC Maintenance Windows and Daylight Saving Time
+
+<!-- 24733858 -->
+
+When calculating the difference from UTC to local time, the client will use the active [bias](/exchange/client-developer/web-service-reference/bias) from the "Effective date" of the maintenance window to calculate the local time from the UTC time:
+
+- If Daylight Saving Time (DST) is active on the effective date, then this bias from UTC will always be used, causing the Maintenance Window to open an hour earlier than expected when DST ends.
+- If Daylight Saving Time (DST) is not active on the effective date, then this bias from UTC will always be used, causing the Maintenance Window to open an hour later than expected when DST starts.

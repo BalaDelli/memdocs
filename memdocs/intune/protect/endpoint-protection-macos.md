@@ -4,16 +4,14 @@
 title: Configure endpoint protection on macOS devices with Microsoft Intune | Microsoft Docs
 description: Use Intune to configure macOS devices use the built-in firewall to allow or block specific apps or to use stealth mode, to use Gatekeeper to determine where apps install, and to use FileVault disk encryption.
 keywords:
-author: brenduns
-ms.author: brenduns
+author: lenewsad
+ms.author: lanewsad
 manager: dougeby
-ms.date: 08/15/2022
+ms.date: 10/25/2024
 ms.topic: reference
 ms.service: microsoft-intune
 ms.subservice: protect
 ms.localizationpriority: medium
-ms.technology:
-
 # optional metadata
 
 #ROBOTS:
@@ -27,9 +25,16 @@ ms.custom: intune-azure
 ms.collection:
 - tier3
 - M365-identity-device-management
+- endpoint-protection
+- sub-secure-endpoints
 ---
 
 # macOS endpoint protection settings in Intune
+
+> [!IMPORTANT]
+> The macOS endpoint protection template has been deprecated. Existing policies remain unchanged, but you can no longer create new policies using this template. > Instead, use one of the following options:
+> - Use Endpoint security policies like [disk encryption](../protect/endpoint-security-disk-encryption-policy.md) for Filevault, or [Firewall](../protect/endpoint-security-firewall-policy.md) policy.
+> - Use the Settings catalog to create new configuration policies for FileVault, Firewall, and System Policy Control (Gatekeeper) payloads. For more information, see [macOS settings catalog](../configuration/settings-catalog.md).
 
 This article shows you the endpoint protection settings that you can configure for devices that run macOS. You configure these settings by using a macOS device configuration profile for [endpoint protection](endpoint-protection-configure.md) in Intune.
 
@@ -117,12 +122,26 @@ Use the firewall to control connections per-application, rather than per-port. U
 
   **Apps allowed**: Configure a list of apps that are allowed to receive incoming connections.
 
-  - **Add apps by bundle ID**: Enter the *bundle ID* of the app. On macOS devices, you can get the bundle ID using the Terminal app and AppleScript: `osascript -e 'id of app "AppName"`. Apple's web site has a list of [built-in Apple apps](https://support.apple.com/HT208094).
+  - **Add apps by bundle ID**: Enter the *bundle ID* of the app.
+
+    To get the app bundle ID:
+
+    - Use the Terminal app and AppleScript: `osascript -e 'id of app "AppName"`.
+    - Apple's web site has a list of [built-in Apple apps](https://support.apple.com/HT211833).
+    - For apps added to Intune, [you can use the Intune admin center](../apps/get-app-bundle-id-intune-admin-center.md).
+
   - **Add store app**: Select a store app you previously added in Intune. For more information, see [Add apps to Microsoft Intune](../apps/apps-add.md).
 
   **Apps blocked**: Configure a list of apps that have incoming connections blocked.
 
-  - **Add apps by bundle ID**: Enter the *bundle ID* of the app. On macOS devices, you can get the bundle ID using the Terminal app and AppleScript: `osascript -e 'id of app "AppName"`. Apple's web site has a list of [built-in Apple apps](https://support.apple.com/HT208094).
+  - **Add apps by bundle ID**: Enter the *bundle ID* of the app.
+
+    To get the app bundle ID:
+
+    - Use the Terminal app and AppleScript: `osascript -e 'id of app "AppName"`.
+    - Apple's web site has a list of [built-in Apple apps](https://support.apple.com/HT211833).
+    - For apps added to Intune, [you can use the Intune admin center](../apps/get-app-bundle-id-intune-admin-center.md).
+
   - **Add store app**: Select a store app you previously added in Intune. For more information, see [Add apps to Microsoft Intune](../apps/apps-add.md).
 
 - **Enable stealth mode**

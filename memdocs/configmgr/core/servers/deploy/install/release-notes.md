@@ -2,17 +2,18 @@
 title: Release notes
 titleSuffix: Configuration Manager
 description: Learn about urgent issues that aren't yet fixed in the product or covered in a Microsoft Support knowledge base article.
-ms.date: 03/28/2023
-ms.prod: configuration-manager
-ms.technology: configmgr-core
-ms.topic: troubleshooting
-author: banreet
-ms.author: banreetkaur
-manager: sunitashaw
+ms.date: 10/04/2024
+ms.subservice: core-infra
+ms.service: configuration-manager
+ms.topic: conceptual
+author: PalikaSingh
+ms.author: palsi
+manager: apoorvseth
 ms.localizationpriority: medium
 ms.collection: tier3
-
+ms.reviewer: mstewart,aaroncz 
 ---
+
 
 # Release notes for Configuration Manager
 
@@ -26,19 +27,52 @@ This article contains release notes for the current branch of Configuration Mana
 
 For information about the new features introduced with different versions, see the following articles:
 
+- [What's new in version 2403](../../../plan-design/changes/whats-new-in-version-2403.md)
+- [What's new in version 2309](../../../plan-design/changes/whats-new-in-version-2309.md)
 - [What's new in version 2303](../../../plan-design/changes/whats-new-in-version-2303.md)
 - [What's new in version 2211](../../../plan-design/changes/whats-new-in-version-2211.md)
-- [What's new in version 2207](../../../plan-design/changes/whats-new-in-version-2207.md)
-- [What's new in version 2203](../../../plan-design/changes/whats-new-in-version-2203.md)
-- [What's new in version 2111](../../../plan-design/changes/whats-new-in-version-2111.md)
 
 
 > [!TIP]
 > You can use RSS to be notified when this page is updated. For more information, see [How to use the docs](../../../../../use-docs.md#notifications).
+
 <!-- > To get notified when this page is updated, copy and paste the following URL into your RSS feed reader:
 > `https://learn.microsoft.com/api/search/rss?search=%22release+notes+-+Configuration+Manager%22&locale=en-us` -->
 
-<!-- ## Client management -->
+## Client management
+
+### Clients are not able download content from CMG when branch cache is enabled
+_Applies to: version 2403_
+
+After enabling Branch Cache on primary sites, clients are unable to download apps and packages from the CMG. They typically manage to download only 20-30% of the content before the process gets stuck. In some cases, after downloading certain blocks of packages from the CMG, clients look for Branch Cache to retrieve the remaining content. However, none of the clients are able to download the complete content from the CMG, which prevents others from using Branch Cache to access it. The **CTM.log** on the client includes entries similar to the following:
+
+```log
+(CTM.log - CTMJob({63B4C4CE-2DC4-4062-93C7-E5019B3B6CE1}): CCTMJob::Start - State=DownloadingContentFromPeers)
+CTM.log _- CTMJob({D21758B0-D895-474E-9695-1023A25A1770}): CCTMJob::_PerformDownloadWithOutBranchCache - Download failure using branchcache, fallback to regular download
+```
+To work around this issue, disable branch cache.
+
+> [!NOTE]
+> Clients are able to download content from the on-premise DP when Branch Cache is enabled.
+
+## Endpoint Protection
+### Security configurations removed from Intune
+<!-- 27951696 -->
+_Applies to: version 2309 with KB25858444 and later_
+
+Microsoft Defender security configurations are no longer managed with Microsoft Intune after updating to Configuration Manager version 2403, or installing the [Update Rollup for 2309](../../../../hotfix/2309/25858444.md). 
+
+The symptom is seen as a drop in the Microsoft Security Score values when viewed in Intune. This issue happens because security policy configuration data is incorrectly removed from clients after Configuration Manager clients are upgraded. 
+
+An updated version of the Microsoft Security Client Policy Configuration Tool, ConfigSecurityPolicy.exe, is available to resolve the Endpoint Protection policy issue described in this note.
+
+The updated tool, version 4.18.24040.4, is distributed with the April 2024 monthly Microsoft Defender platform update. At the time of this writing, the platform update is in the process of global distribution, and should be broadly available in all regions by May 17, 2024.   
+Once the platform update is installed on affected clients, Endpoint Protection policies are reapplied from Intune within 8 hours. The "Manage Endpoint Protection client on client computers" setting in Configuration Manager can be changed back to "Yes" as required.
+#### Additional references
+
+- [Monthly platform and engine versions](/defender-endpoint/microsoft-defender-antivirus-updates#monthly-platform-and-engine-versions)
+- [Microsoft Defender update for Windows operating system installation images](https://support.microsoft.com/topic/microsoft-defender-update-for-windows-operating-system-installation-images-1c89630b-61ff-00a1-04e2-2d1f3865450d).
+- [Sync devices to get the latest policies and actions with Intune](/mem/intune/remote-actions/device-sync#sync-a-device)
 
 ## Set up and upgrade
 
@@ -59,7 +93,18 @@ This failure happens because the service connection point can't communicate with
 
 For more information, see [internet access requirements](../../../plan-design/network/internet-endpoints.md#service-connection-point) for the service connection point.
 
-<!-- ## OS deployment -->
+## OS deployment
+
+### PXE Responder is not installed correctly after upgrading to 2403 in untrusted domain
+_Applies to: version 2403_
+
+After upgrading to 2403, site servers serving as a PXE responder might see failures due to incorrect configuration of the registry keys. We can observe the below failures in **distmgr.log** indicating that the registry keys were not configured correctly.
+ 
+```log
+Failed to get OS platform for server DP2.CONTOSO2.COM.Either a permissions issue or the server is not supported OS SMS_DISTRIBUTION_MANAGER
+CDistributionManager::SetDpRegistry failed; 0x80070005 SMS_DISTRIBUTION_MANAGER
+``` 
+This happened due to currently unexplained failures in platform architecture identification that were introduced during the addition of support for arm64 machines to serve as remote distribution points.
 
 ## Software updates
 
@@ -148,7 +193,22 @@ AS
     WHERE RN = 1
 GO
 ```
+## Boundaries and Boundary groups
 
+### Clients not belonging to any boundary group may fail to download due to SQL issue 
+<!--22760249-->
+*Applies to: version 2303, 2309 RTM*
+
+ Consider ConfigMgr hierarchy with a remote MP and CMG and you deploy an app to a device collection. The Clients cannot download app, and reflect the below SQL permissions issue in **MP_Location.log**.
+
+ ```log
+    The SELECT permission was denied on the object 'vSMS_DefaultBoundaryGroup', database 'CM_xxx', schema 'dbo'.
+ ```
+ To work around the issue run the below SQL script on the SQL database on the primary sites where the MP reports.
+
+```sql
+    GRANT SELECT ON vSMS_DefaultBoundaryGroup To smsdbrole_MP
+```
 <!-- ## Cloud services -->
 
 <!-- ## Role based administration -->
